@@ -1,5 +1,8 @@
 {
-  imports = [ ./bufferline.nix ./lsp.nix ];
+  imports = [
+    ./bufferline.nix
+    ./lsp.nix
+  ];
 
   colorschemes.catppuccin = {
     enable = true;
