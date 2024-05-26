@@ -2,6 +2,7 @@
   imports = [
     ./bufferline.nix
     ./lsp.nix
+    ./cmp.nix
   ];
 
   colorschemes.catppuccin = {
