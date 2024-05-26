@@ -25,7 +25,7 @@
           nixvimModule = {
             inherit pkgs;
             module = ({
-              imports = [./plugins/default.nix];
+              imports = [./options.nix ./plugins/default.nix];
             });
             # You can use `extraSpecialArgs` to pass additional arguments to your module files
             extraSpecialArgs = {
