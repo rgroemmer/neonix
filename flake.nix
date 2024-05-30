@@ -26,9 +26,11 @@
             inherit pkgs;
             module = ({
               imports = [
+                ./options.nix
+                ./keymap.nix
+
                 ./plugins
                 ./langs
-                ./options.nix
               ];
             });
             # You can use `extraSpecialArgs` to pass additional arguments to your module files
