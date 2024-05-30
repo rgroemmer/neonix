@@ -11,4 +11,11 @@
       flavour = "mocha";
     };
   };
+
+  plugins = {
+    better-escape = {
+      enable = true;
+      mapping = ["jk"];
+    };
+  };
 }
