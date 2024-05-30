@@ -25,7 +25,14 @@
           nixvimModule = {
             inherit pkgs;
             module = ({
-              imports = [./options.nix ./plugins/default.nix];
+
+              imports = [
+                ./options.nix
+                ./keymap.nix
+
+                ./plugins
+                ./langs
+              ];
             });
             # You can use `extraSpecialArgs` to pass additional arguments to your module files
             extraSpecialArgs = {
@@ -35,6 +42,14 @@
           nvim = nixvim'.makeNixvimWithModule nixvimModule;
         in
         {
+          devShells.default = pkgs.mkShell {
+            buildInputs = [ pkgs.entr ];
+
+            shellHook = ''
+              echo "Dev environment ready, Run ./watch.sh to start live reloading.";
+            '';
+          };
+
           checks = {
             # Run `nix flake check .` to verify that your config is not broken
             default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;

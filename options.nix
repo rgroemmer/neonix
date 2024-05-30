@@ -31,6 +31,7 @@
     relativenumber = true;
     numberwidth = 2;
     ruler = false;
+    showmode = false;
 
     splitbelow = true;
     splitright = true;
@@ -39,12 +40,16 @@
 
     signcolumn = "yes";
     cmdheight = 1;
-    cot = ["menu" "menuone" "noselect"];
+    cot = [
+      "menu"
+      "menuone"
+      "noselect"
+    ];
     colorcolumn = "120";
 
     updatetime = 100;
     timeout = true;
-    timeoutlen = 250;
+    timeoutlen = 350;
 
     foldlevel = 99;
     foldlevelstart = 99;
