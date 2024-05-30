@@ -15,7 +15,7 @@
   plugins = {
     better-escape = {
       enable = true;
-      mapping = ["jk"];
+      mapping = [ "jk" ];
     };
   };
 }

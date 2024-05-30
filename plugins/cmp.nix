@@ -32,6 +32,5 @@
 
     cmp-nvim-lsp.enable = true;
     cmp-path.enable = true;
-
   };
 }

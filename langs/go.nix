@@ -1,4 +1,4 @@
-{pkgs, ... }:
+{ pkgs, ... }:
 {
   # packages required in PATH for this lang
   extraPackages = with pkgs; [
@@ -12,7 +12,10 @@
     extraOptions.settings = {
       gopls = {
         staticcheck = true;
-        directoryFilters = ["-.git" "-.vscode"];
+        directoryFilters = [
+          "-.git"
+          "-.vscode"
+        ];
         semanticTokens = true;
         analyses = {
           fieldalignment = true;
