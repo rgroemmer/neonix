@@ -10,6 +10,7 @@
       };
       mode = [ "n" ];
     }
+
     {
       action = "<C-w>s";
       key = "<leader>.";
