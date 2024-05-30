@@ -3,6 +3,9 @@
     ./lsp.nix
     ./cmp.nix
     ./lualine.nix
+    ./explorer.nix
+    ./treesitter.nix
+    ./telescope.nix
   ];
 
   colorschemes.catppuccin = {
