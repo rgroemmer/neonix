@@ -1,8 +1,8 @@
 {
   imports = [
-    ./bufferline.nix
     ./lsp.nix
     ./cmp.nix
+    ./lualine.nix
   ];
 
   colorschemes.catppuccin = {
@@ -13,6 +13,7 @@
   };
 
   plugins = {
+    bufferline.enable = true;
     better-escape = {
       enable = true;
       mapping = [ "jk" ];

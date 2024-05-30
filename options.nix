@@ -31,6 +31,7 @@
     relativenumber = true;
     numberwidth = 2;
     ruler = false;
+    showmode = false;
 
     splitbelow = true;
     splitright = true;
