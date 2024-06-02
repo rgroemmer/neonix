@@ -8,7 +8,12 @@
   };
 
   outputs =
-    { nixvim, flake-parts, ... }@inputs:
+    {
+      nixvim,
+      flake-parts,
+      self,
+      ...
+    }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
@@ -17,25 +22,12 @@
         "aarch64-darwin"
       ];
 
-      flake =
-        { self, ... }:
-        {
-          homeManagerModules.default =
-            {
-              lib,
-              config,
-              pkgs,
-              ...
-            }:
-            {
-              options.programs.neonix = {
-                enable = lib.mkEnableOption "neonix";
-              };
-              config = lib.mkIf config.options.programs.neonix.enable {
-                home.packages = [ self.packages.${pkgs.system} ];
-              };
-            };
+      flake = {
+        homeManagerModules = {
+          default = self.homeManagerModules.neonix;
+          neonix = import ./hm-module.nix self;
         };
+      };
 
       perSystem =
         { pkgs, system, ... }:
