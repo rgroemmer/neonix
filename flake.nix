@@ -17,6 +17,26 @@
         "aarch64-darwin"
       ];
 
+      flake =
+        { self, ... }:
+        {
+          homeManagerModules.default =
+            {
+              lib,
+              config,
+              pkgs,
+              ...
+            }:
+            {
+              options.programs.neonix = {
+                enable = lib.mkEnableOption "neonix";
+              };
+              config = lib.mkIf config.options.programs.neonix.enable {
+                home.packages = [ self.packages.${pkgs.system} ];
+              };
+            };
+        };
+
       perSystem =
         { pkgs, system, ... }:
         let
