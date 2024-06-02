@@ -1,3 +1,4 @@
+# self is an explicit not a global parameter
 self:
 {
   config,

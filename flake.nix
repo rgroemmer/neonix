@@ -25,6 +25,7 @@
       flake = {
         homeManagerModules = {
           default = self.homeManagerModules.neonix;
+          # calling module with explicit parameter self
           neonix = import ./hm-module.nix self;
         };
       };
