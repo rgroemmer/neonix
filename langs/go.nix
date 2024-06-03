@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   # packages required in PATH for this lang
   extraPackages = with pkgs; [
@@ -23,5 +23,8 @@
         };
       };
     };
+  };
+  plugins.treesitter = {
+    grammarPackages = with config.plugins.treesitter.package.builtGrammars; [ go ];
   };
 }
