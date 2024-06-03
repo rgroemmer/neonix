@@ -13,6 +13,7 @@
         gD = "declaration";
         gr = "references";
         gd = "definition";
+        ca = "code_action";
         gi = "implementation";
         gt = "type_definition";
         "<leader>rn" = {
