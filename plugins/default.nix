@@ -9,6 +9,7 @@
     ./wilder.nix
     ./which-key.nix
     ./mini.nix
+    ./lazygit.nix
   ];
 
   colorschemes.catppuccin = {
@@ -27,7 +28,7 @@
   };
 
   plugins = {
-    bufferline.enable = true;
+    dressing.enable = true;
     illuminate.enable = true;
     better-escape = {
       enable = true;

@@ -29,7 +29,7 @@
             section = "";
           }
         ];
-        footer = "I use NIX btw!";
+        footer = "I use NIX btw.";
       };
       # mini file explorer
       files = { };

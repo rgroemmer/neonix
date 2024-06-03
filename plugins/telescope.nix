@@ -1,9 +1,19 @@
 { pkgs, ... }:
 {
-  extraPackages = with pkgs; [ ripgrep ];
+  extraPackages = with pkgs; [
+    ripgrep
+    fd
+  ];
 
   plugins.telescope = {
     enable = true;
+
+    settings.pickers = {
+      buffers.initial_mode = "normal";
+      buffers.theme = "ivy";
+    };
+
+    extensions.fzf-native.enable = true;
 
     keymaps = {
       "<leader>ff" = {
@@ -19,7 +29,7 @@
           desc = "Find in current buffer";
         };
       };
-      "<leader>fr" = {
+      "<leader>?" = {
         action = "oldfiles";
 
         options = {
@@ -38,7 +48,7 @@
           desc = "Search word under cursor";
         };
       };
-      "<leader>fb" = {
+      "<leader><space>" = {
         action = "buffers";
         options = {
           desc = "Find buffer";
@@ -49,6 +59,16 @@
 
         options = {
           desc = "Search in command history";
+        };
+      };
+    };
+
+    settings.defaults = {
+      mappings = {
+        i = {
+          "<esc>" = {
+            __raw = "require('telescope.actions').close";
+          };
         };
       };
     };
