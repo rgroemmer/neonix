@@ -11,6 +11,6 @@ self:
     enable = lib.mkEnableOption "neonix";
   };
   config = lib.mkIf config.programs.neonix.enable {
-    home.packages = [ self.packages.${pkgs.system} ];
+    home.packages = [ self.packages.${pkgs.system}.default ];
   };
 }
