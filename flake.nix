@@ -42,6 +42,7 @@
               imports = [
                 ./options.nix
                 ./keymap.nix
+                ./autocmds.nix
 
                 ./plugins
                 ./langs
