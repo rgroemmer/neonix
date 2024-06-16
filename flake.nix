@@ -47,6 +47,9 @@
                 ./plugins
                 ./langs
               ];
+
+              viAlias = true;
+              vimAlias = true;
             });
             # You can use `extraSpecialArgs` to pass additional arguments to your module files
             extraSpecialArgs = {

@@ -31,8 +31,10 @@
         ];
         footer = "I use NIX btw.";
       };
-      # mini file explorer
-      files = { };
+
+      files = {}; # mini file explorer
+      comment = {}; # toggle comments
+      pairs = {}; # auto pairs
     };
   };
 }
