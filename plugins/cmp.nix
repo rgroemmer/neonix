@@ -1,5 +1,16 @@
-{
+{pkgs, ...}: {
+  extraPlugins = [
+    pkgs.vimPlugins.lsp_signature-nvim
+  ];
+
   plugins = {
+
+    cmp-nvim-lsp.enable = true;
+    cmp-path.enable = true;
+    cmp_luasnip.enable = true;
+    cmp-buffer.enable = true;
+    cmp-emoji.enable = true;
+
     cmp = {
       enable = true;
       autoEnableSources = false;
@@ -9,8 +20,9 @@
           __raw = ''
             cmp.config.sources({
               { name = 'nvim_lsp' },
-              { name = 'luasnip' },
               { name = 'path' },
+              { name = 'luasnip' },
+              { name = 'emoji' },
               -- { name = 'ultisnips' },
               -- { name = 'snippy' },
               -- { name = 'vsnip' },
@@ -25,7 +37,7 @@
         mapping = {
           "<C-Space>" = "cmp.mapping.complete()";
           "<C-e>" = "cmp.mapping.close()";
-          "<CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })";
+          "<CR>" = "cmp.mapping.confirm({ select = true })";
           "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
           "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
         };
@@ -35,29 +47,9 @@
             winhighlight = "FloatBorder:CmpBorder";
             scrollbar = false;
             sidePadding = 0;
-            border = [
-              "┌"
-              "─"
-              "┐"
-              "│"
-              "┘"
-              "─"
-              "└"
-              "│"
-            ];
           };
 
           documentation = {
-            border = [
-              "┌"
-              "─"
-              "┐"
-              "│"
-              "┘"
-              "─"
-              "└"
-              "│"
-            ];
             winhighlight = "FloatBorder:CmpBorder";
           };
         };
@@ -119,11 +111,18 @@
        };
       };
     };
-
-    cmp-nvim-lsp.enable = true;
-    cmp-path.enable = true;
-    cmp-buffer.enable = true; # get words from buffer
-    cmp-emoji.enable = true;
-    cmp_luasnip.enable = true;
   };
+    extraConfigLua = ''
+      require "lsp_signature".setup({
+        handler_opts = {
+          border = "none"
+        },
+      })
+      local golang_setup = {
+        on_attach = function(client, bufnr)
+          require "lsp_signature".on_attach(signature_setup, bufnr)  -- Note: add in lsp client on-attach
+        end,
+      }
+      require'lspconfig'.gopls.setup(golang_setup)
+    '';
 }

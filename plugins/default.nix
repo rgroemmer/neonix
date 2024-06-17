@@ -10,6 +10,7 @@
     ./which-key.nix
     ./mini.nix
     ./lazygit.nix
+    ./debug.nix
   ];
 
   colorschemes.catppuccin = {
@@ -18,7 +19,7 @@
       flavour = "mocha";
       integrations = {
         alpha = true;
-        cmp = true;
+        cmp = false;
         dashboard = true;
         illuminate.enabled = true;
         mini.enabled = true;
@@ -27,7 +28,19 @@
     };
   };
 
+  highlightOverride = {
+    "@variable" = {
+      fg = "#f2cdcd";
+      bg = null;
+    };
+    "LspSignatureActiveParameter" = {
+      fg = null;
+      bg = "#313244";
+    };
+  };
+
   plugins = {
+    nvim-colorizer.enable = true;
     dressing.enable = true;
     illuminate.enable = true;
     better-escape = {
