@@ -24,6 +24,7 @@
               { name = 'path' },
               { name = 'luasnip' },
               { name = 'emoji' },
+              { name = 'cmdline' },
               -- { name = 'ultisnips' },
               -- { name = 'snippy' },
               -- { name = 'vsnip' },
