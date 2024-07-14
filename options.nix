@@ -8,34 +8,41 @@
     virtual_text = false;
   };
 
-  extraConfigLuaPost = ''
-    local ns = vim.api.nvim_create_namespace('CurlineDiag')
-    vim.opt.updatetime = 100
-    vim.api.nvim_create_autocmd('LspAttach',{
-      callback = function(args)
-        vim.api.nvim_create_autocmd('CursorHold', {
-          buffer = args.buf,
+  extraConfigLuaPost =
+    # lua
+    ''
+      -- show diagnostics on line hover
+      vim.api.nvim_create_autocmd({ "CursorHold" }, {
+          pattern = "*",
           callback = function()
-            pcall(vim.api.nvim_buf_clear_namespace,args.buf,ns, 0, -1)
-            local hi = { 'Error', 'Warn','Info','Hint'}
-            local curline = vim.api.nvim_win_get_cursor(0)[1]
-            local diagnostics = vim.diagnostic.get(args.buf, {lnum =curline - 1})
-            local virt_texts = { { (' '):rep(4) } }
-            for _, diag in ipairs(diagnostics) do
-              virt_texts[#virt_texts + 1] = {diag.message, 'Diagnostic'..hi[diag.severity]}
-            end
-            vim.api.nvim_buf_set_extmark(args.buf, ns, curline - 1, 0,{
-              virt_text = virt_texts,
-              hl_mode = 'combine'
-            })
+              for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+                  if vim.api.nvim_win_get_config(winid).zindex then
+                      return
+                  end
+              end
+              vim.diagnostic.open_float({
+                  scope = "cursor",
+                  focusable = false,
+                  close_events = {
+                      "CursorMoved",
+                      "CursorMovedI",
+                      "BufHidden",
+                      "InsertCharPre",
+                      "WinLeave",
+                  },
+              })
           end
-        })
+      })
+
+
+      local signs = { Error = "💥", Warn = "🚧", Hint = "💡", Info = " " }
+      for type, icon in pairs(signs) do
+          local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
       end
-    })
-  '';
+    '';
 
   opts = {
-    # TODO
     sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions";
     completeopt = "menu,menuone,noselect";
 
@@ -59,8 +66,8 @@
 
     cursorline = true;
     number = true;
-    relativenumber = true;
-    numberwidth = 2;
+    relativenumber = false;
+    numberwidth = 3;
     ruler = false;
     showmode = false;
 
