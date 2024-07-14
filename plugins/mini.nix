@@ -34,7 +34,6 @@
 
       files = {}; # mini file explorer
       comment = {}; # toggle comments
-      pairs = {}; # auto pairs
     };
   };
 }

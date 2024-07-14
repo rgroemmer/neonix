@@ -6,11 +6,11 @@
     ./explorer.nix
     ./treesitter.nix
     ./telescope.nix
-    ./wilder.nix
     ./which-key.nix
     ./mini.nix
     ./lazygit.nix
     ./debug.nix
+    ./yaml-companion.nix
   ];
 
   colorschemes.catppuccin = {
@@ -40,6 +40,7 @@
   };
 
   plugins = {
+    nvim-autopairs.enable = true;
     nvim-colorizer.enable = true;
     dressing.enable = true;
     illuminate.enable = true;

@@ -10,6 +10,7 @@
     cmp_luasnip.enable = true;
     cmp-buffer.enable = true;
     cmp-emoji.enable = true;
+    cmp-cmdline.enable = true;
 
     cmp = {
       enable = true;
