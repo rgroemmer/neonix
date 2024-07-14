@@ -2,7 +2,7 @@
   imports = [
     ./go.nix
     ./yaml.nix
-    #./helm.nix
+    ./helm.nix
     ./nix.nix
   ];
 }

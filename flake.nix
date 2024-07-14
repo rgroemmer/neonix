@@ -5,6 +5,12 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim.url = "github:nix-community/nixvim";
     flake-parts.url = "github:hercules-ci/flake-parts";
+
+    # Move to source when #50 is merged
+    yaml-companion = {
+      url = "github:agorgl/yaml-companion.nvim/patch-1";
+      flake = false;
+    };
   };
 
   outputs =
@@ -37,7 +43,7 @@
           nixvim' = nixvim.legacyPackages.${system};
           nixvimModule = {
             inherit pkgs;
-            module = ({
+            module = {
 
               imports = [
                 ./options.nix
@@ -50,9 +56,10 @@
 
               viAlias = true;
               vimAlias = true;
-            });
+            };
             # You can use `extraSpecialArgs` to pass additional arguments to your module files
             extraSpecialArgs = {
+              inherit inputs;
             };
           };
           nvim = nixvim'.makeNixvimWithModule nixvimModule;
