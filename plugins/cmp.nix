@@ -20,16 +20,16 @@
         sources = {
           __raw = ''
             cmp.config.sources({
-              { name = 'nvim_lsp' },
-              { name = 'path' },
-              { name = 'luasnip' },
-              { name = 'emoji' },
-              { name = 'cmdline' },
+              { name = 'nvim_lsp', max_item_count = 8, group_index = 1},
+              { name = 'path', group_index = 2},
+              { name = 'luasnip', max_item_count = 3, group_index = 1},
+              { name = 'emoji', max_item_count = 5, group_index = 2},
+              { name = 'cmdline', max_item_count = 6},
               -- { name = 'ultisnips' },
               -- { name = 'snippy' },
               -- { name = 'vsnip' },
             }, {
-              { name = 'buffer' },
+              { name = 'buffer' , max_item_count = 3, group_index = 2},
             })
           '';
         };
@@ -39,22 +39,21 @@
         mapping = {
           "<C-Space>" = "cmp.mapping.complete()";
           "<C-e>" = "cmp.mapping.close()";
-          "<CR>" = "cmp.mapping.confirm({ select = true })";
+          "<CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false })";
           "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
           "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
         };
 
-        window = {
-          completion = {
-            winhighlight = "FloatBorder:CmpBorder";
-            scrollbar = false;
-            sidePadding = 0;
-          };
+          window = {
+            completion = {
+              winhighlight = "FloatBorder:CmpBorder";
+              scrollbar = false;
+            };
 
-          documentation = {
-            winhighlight = "FloatBorder:CmpBorder";
+            documentation = {
+              winhighlight = "FloatBorder:CmpBorder";
+            };
           };
-        };
 
        formatting = {
            fields = ["abbr" "kind" "menu"];
