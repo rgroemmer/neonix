@@ -40,6 +40,30 @@
           local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
       end
+
+      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+        vim.lsp.diagnostic.on_publish_diagnostics, {
+        update_in_insert = true,
+      })
+
+      vim.keymap.set("n", "<leader>lx", function()
+          isLspDiagnosticsVisible = not isLspDiagnosticsVisible
+          vim.diagnostic.config({
+              virtual_text = isLspDiagnosticsVisible,
+              underline = isLspDiagnosticsVisible
+            })
+      end)
+
+      vim.keymap.set("n", "<leader>lh", function()
+      	if vim.wo.relativenumber then
+      		vim.wo.relativenumber = false
+      		vim.wo.number = true
+      	else
+      		vim.wo.relativenumber = true
+      		vim.wo.number = false
+      	end
+      end)
+
     '';
 
   opts = {
