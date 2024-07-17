@@ -30,7 +30,7 @@
 
   highlightOverride = {
     "@variable" = {
-      fg = "#f2cdcd";
+      fg = "#ea999c";
       bg = null;
     };
     "LspSignatureActiveParameter" = {
