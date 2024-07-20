@@ -46,7 +46,7 @@
         update_in_insert = true,
       })
 
-      vim.keymap.set("n", "<leader>lx", function()
+      vim.keymap.set("n", "<leader>dv", function()
           isLspDiagnosticsVisible = not isLspDiagnosticsVisible
           vim.diagnostic.config({
               virtual_text = isLspDiagnosticsVisible,
@@ -54,10 +54,10 @@
             })
       end)
 
-      vim.keymap.set("n", "<leader>lh", function()
+      vim.keymap.set("n", "<leader>dn", function()
       	if vim.wo.relativenumber then
       		vim.wo.relativenumber = false
-      		vim.wo.number = true
+     		vim.wo.number = true
       	else
       		vim.wo.relativenumber = true
       		vim.wo.number = false
