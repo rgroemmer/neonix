@@ -45,7 +45,7 @@
 
     conform-nvim = {
       formattersByFt = {
-        go = ["goimports"];
+        go = [ "goimports" ];
       };
 
       formatters = {
@@ -57,7 +57,7 @@
 
     lint = {
       lintersByFt = {
-        go = ["golangcilint"];
+        go = [ "golangcilint" ];
       };
       linters = {
         golangcilint = {
@@ -65,7 +65,6 @@
         };
       };
     };
-
 
   };
   plugins.treesitter = {

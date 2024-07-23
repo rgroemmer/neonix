@@ -16,7 +16,7 @@
 
     conform-nvim = {
       formattersByFt = {
-        nix = ["nixfmt"];
+        nix = [ "nixfmt" ];
       };
       formatters = {
         nixfmt = {
@@ -27,7 +27,7 @@
 
     lint = {
       lintersByFt = {
-        nix = ["statix"];
+        nix = [ "statix" ];
       };
       linters = {
         statix = {
