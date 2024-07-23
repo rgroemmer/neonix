@@ -1,7 +1,6 @@
-{pkgs, ...}: {
-  extraPlugins = [
-    pkgs.vimPlugins.lsp_signature-nvim
-  ];
+{ pkgs, ... }:
+{
+  extraPlugins = [ pkgs.vimPlugins.lsp_signature-nvim ];
 
   plugins = {
 
@@ -44,86 +43,90 @@
           "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
         };
 
-          window = {
-            completion = {
-              winhighlight = "FloatBorder:CmpBorder";
-              scrollbar = false;
-            };
-
-            documentation = {
-              winhighlight = "FloatBorder:CmpBorder";
-            };
+        window = {
+          completion = {
+            winhighlight = "FloatBorder:CmpBorder";
+            scrollbar = false;
           };
 
-       formatting = {
-           fields = ["abbr" "kind" "menu"];
-           format =
-             # lua
-             ''
-               function(_, item)
-                 local icons = {
-                   Namespace = "󰌗",
-                   Text = "󰉿",
-                   Method = "󰆧",
-                   Function = "󰆧",
-                   Constructor = "",
-                   Field = "󰜢",
-                   Variable = "󰀫",
-                   Class = "󰠱",
-                   Interface = "",
-                   Module = "",
-                   Property = "󰜢",
-                   Unit = "󰑭",
-                   Value = "󰎠",
-                   Enum = "",
-                   Keyword = "󰌋",
-                   Snippet = "",
-                   Color = "󰏘",
-                   File = "󰈚",
-                   Reference = "󰈇",
-                   Folder = "󰉋",
-                   EnumMember = "",
-                   Constant = "󰏿",
-                   Struct = "󰙅",
-                   Event = "",
-                   Operator = "󰆕",
-                   TypeParameter = "󰊄",
-                   Table = "",
-                   Object = "󰅩",
-                   Tag = "",
-                   Array = "[]",
-                   Boolean = "",
-                   Number = "",
-                   Null = "󰟢",
-                   String = "󰉿",
-                   Calendar = "",
-                   Watch = "󰥔",
-                   Package = "",
-                   Copilot = "",
-                   Codeium = "",
-                   TabNine = "",
-                 }
+          documentation = {
+            winhighlight = "FloatBorder:CmpBorder";
+          };
+        };
 
-                 local icon = icons[item.kind] or ""
-                 item.kind = string.format("%s %s", icon, item.kind or "")
-                 return item
-               end
-             '';
-       };
+        formatting = {
+          fields = [
+            "abbr"
+            "kind"
+            "menu"
+          ];
+          format =
+            # lua
+            ''
+              function(_, item)
+                local icons = {
+                  Namespace = "󰌗",
+                  Text = "󰉿",
+                  Method = "󰆧",
+                  Function = "󰆧",
+                  Constructor = "",
+                  Field = "󰜢",
+                  Variable = "󰀫",
+                  Class = "󰠱",
+                  Interface = "",
+                  Module = "",
+                  Property = "󰜢",
+                  Unit = "󰑭",
+                  Value = "󰎠",
+                  Enum = "",
+                  Keyword = "󰌋",
+                  Snippet = "",
+                  Color = "󰏘",
+                  File = "󰈚",
+                  Reference = "󰈇",
+                  Folder = "󰉋",
+                  EnumMember = "",
+                  Constant = "󰏿",
+                  Struct = "󰙅",
+                  Event = "",
+                  Operator = "󰆕",
+                  TypeParameter = "󰊄",
+                  Table = "",
+                  Object = "󰅩",
+                  Tag = "",
+                  Array = "[]",
+                  Boolean = "",
+                  Number = "",
+                  Null = "󰟢",
+                  String = "󰉿",
+                  Calendar = "",
+                  Watch = "󰥔",
+                  Package = "",
+                  Copilot = "",
+                  Codeium = "",
+                  TabNine = "",
+                }
+
+                local icon = icons[item.kind] or ""
+                item.kind = string.format("%s %s", icon, item.kind or "")
+                return item
+              end
+            '';
+        };
       };
     };
   };
-    extraConfigLua = ''
-      require "lsp_signature".setup({
-        handler_opts = {
-          border = "none"
-        },
-      })
-      local golang_setup = {
-        on_attach = function(client, bufnr)
-          require "lsp_signature".on_attach(signature_setup, bufnr)  -- Note: add in lsp client on-attach
-        end,
-      }
-      require'lspconfig'.gopls.setup(golang_setup)
-    '';
+  extraConfigLua = ''
+    require "lsp_signature".setup({
+      handler_opts = {
+        border = "none"
+      },
+    })
+    local golang_setup = {
+      on_attach = function(client, bufnr)
+        require "lsp_signature".on_attach(signature_setup, bufnr)  -- Note: add in lsp client on-attach
+      end,
+    }
+    require'lspconfig'.gopls.setup(golang_setup)
+  '';
 }
