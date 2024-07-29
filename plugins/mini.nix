@@ -32,7 +32,6 @@
         footer = "I use NIX btw.";
       };
 
-      files = {}; # mini file explorer
       comment = {}; # toggle comments
     };
   };
