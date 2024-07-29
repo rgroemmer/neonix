@@ -44,9 +44,41 @@
     nvim-colorizer.enable = true;
     dressing.enable = true;
     illuminate.enable = true;
+    trouble.enable = true;
     better-escape = {
       enable = true;
-      mapping = [ "jk" ];
+      settings = {
+        default_mappings = false;
+        mappings = {
+          c = {
+            j = {
+              j = "<Esc>";
+              k = "<Esc>";
+            };
+          };
+          i = {
+            j = {
+              j = "<Esc>";
+              k = "<Esc>";
+            };
+          };
+          s = {
+            j = {
+              k = "<Esc>";
+            };
+          };
+          t = {
+            h = {
+              h = "<Esc>";
+            };
+          };
+          v = {
+            j = {
+              k = "<Esc>";
+            };
+          };
+        };
+      };
     };
     friendly-snippets = {
       enable = true;
