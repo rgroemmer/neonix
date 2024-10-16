@@ -6,10 +6,11 @@
     ./explorer.nix
     ./treesitter.nix
     ./telescope.nix
-    ./wilder.nix
     ./which-key.nix
     ./mini.nix
     ./lazygit.nix
+    ./debug.nix
+    ./yaml-companion.nix
   ];
 
   colorschemes.catppuccin = {
@@ -18,7 +19,7 @@
       flavour = "mocha";
       integrations = {
         alpha = true;
-        cmp = true;
+        cmp = false;
         dashboard = true;
         illuminate.enabled = true;
         mini.enabled = true;
@@ -27,12 +28,63 @@
     };
   };
 
+  highlightOverride = {
+    "@variable" = {
+      fg = "#ea999c";
+      bg = null;
+    };
+    "LspSignatureActiveParameter" = {
+      fg = null;
+      bg = "#313244";
+    };
+  };
+
   plugins = {
+    nvim-autopairs.enable = true;
+    nvim-colorizer.enable = true;
     dressing.enable = true;
     illuminate.enable = true;
+    trouble.enable = true;
     better-escape = {
       enable = true;
-      mapping = [ "jk" ];
+      settings = {
+        default_mappings = false;
+        mappings = {
+          c = {
+            j = {
+              j = "<Esc>";
+              k = "<Esc>";
+            };
+          };
+          i = {
+            j = {
+              j = "<Esc>";
+              k = "<Esc>";
+            };
+          };
+          s = {
+            j = {
+              k = "<Esc>";
+            };
+          };
+          t = {
+            h = {
+              h = "<Esc>";
+            };
+          };
+          v = {
+            j = {
+              k = "<Esc>";
+            };
+          };
+        };
+      };
+    };
+    friendly-snippets = {
+      enable = true;
+    };
+    luasnip = {
+      enable = true;
     };
   };
 }

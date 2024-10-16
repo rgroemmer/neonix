@@ -2,14 +2,6 @@
 
   keymaps = [
     {
-      action = "<cmd>lua MiniFiles.open()<cr>";
-      key = "<leader>e";
-      options = {
-        desc = "Open File Tree";
-      };
-      mode = [ "n" ];
-    }
-    {
       action = "<cmd> Oil <CR>";
       key = "-";
       options = {
@@ -20,10 +12,6 @@
   ];
 
   plugins = {
-    which-key.registrations = {
-      "<leader>e" = "+tree";
-    };
-
     oil = {
       enable = true;
       settings = {
