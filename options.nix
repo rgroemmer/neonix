@@ -75,7 +75,7 @@
 
   opts = {
     sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions";
-    completeopt = "menu,menuone,noselect";
+    completeopt = "menuone,noinsert,noselect";
 
     spelllang = "en";
 

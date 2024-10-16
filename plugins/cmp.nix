@@ -9,7 +9,6 @@
     cmp_luasnip.enable = true;
     cmp-buffer.enable = true;
     cmp-emoji.enable = true;
-    cmp-cmdline.enable = true;
 
     cmp = {
       enable = true;
@@ -23,7 +22,6 @@
               { name = 'path', group_index = 2},
               { name = 'luasnip', max_item_count = 3, group_index = 1},
               { name = 'emoji', max_item_count = 5, group_index = 2},
-              { name = 'cmdline', max_item_count = 6},
               -- { name = 'ultisnips' },
               -- { name = 'snippy' },
               -- { name = 'vsnip' },
@@ -34,8 +32,6 @@
         };
 
         snippet.expand = "luasnip";
-
-        completion.keyword_length = 2;
 
         mapping = {
           "<C-Space>" = "cmp.mapping.complete()";
