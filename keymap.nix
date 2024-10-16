@@ -53,5 +53,15 @@
       };
       mode = [ "n" ];
     }
+
+    # fat-finger mistakes
+    {
+      action = ":w<CR>";
+      key = "<leader>w";
+      options = {
+        desc = "write";
+      };
+      mode = [ "n" ];
+    }
   ];
 }

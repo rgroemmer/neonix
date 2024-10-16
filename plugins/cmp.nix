@@ -35,6 +35,8 @@
 
         snippet.expand = "luasnip";
 
+        completion.keyword_length = 2;
+
         mapping = {
           "<C-Space>" = "cmp.mapping.complete()";
           "<C-e>" = "cmp.mapping.close()";
