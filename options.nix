@@ -16,8 +16,18 @@
   };
 
   extraConfigLuaPost =
+    # TODO: move to its config
     # lua
     ''
+        -- Navic used to get the actual file path of cursor
+        local navic = require("nvim-navic")
+        navic.setup{
+          lsp = {
+            auto_attach = true;
+          },
+        }
+        -- Display filepath on top-line
+        vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
        -- show diagnostics on line hover
        vim.api.nvim_create_autocmd({ "CursorHold" }, {
            pattern = "*",
@@ -83,14 +93,11 @@
     termguicolors = true;
     scrolloff = 8;
     swapfile = false;
-    hlsearch = false;
-    incsearch = true;
 
-    shiftwidth = 2;
-    tabstop = 2;
-    softtabstop = 2;
-    expandtab = true;
-    smartindent = true;
+    # search
+    ignorecase = true; # ignores case in search
+    smartcase = true; # if uppercase found -> case sensitive search
+    tabstop = 4;
 
     list = true;
     listchars = "tab:  ,trail:λ";

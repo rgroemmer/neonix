@@ -24,6 +24,7 @@
         illuminate.enabled = true;
         mini.enabled = true;
         telescope.enabled = true;
+        navic.enabled = true;
       };
     };
   };
@@ -40,8 +41,10 @@
   };
 
   plugins = {
+    navic.enable = true;
     nvim-autopairs.enable = true;
     nvim-colorizer.enable = true;
+    sleuth.enable = true;
     dressing.enable = true;
     illuminate.enable = true;
     trouble.enable = true;
