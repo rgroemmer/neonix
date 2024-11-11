@@ -41,6 +41,7 @@
   };
 
   plugins = {
+    web-devicons.enable = true;
     navic.enable = true;
     nvim-autopairs.enable = true;
     nvim-colorizer.enable = true;

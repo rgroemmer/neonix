@@ -10,17 +10,19 @@
     # highlight inline code in nix files
     hmts.enable = true;
 
-    lsp.servers.nil-ls = {
+    lsp.servers.nil_ls = {
       enable = true;
     };
 
     conform-nvim = {
-      formattersByFt = {
-        nix = [ "nixfmt" ];
-      };
-      formatters = {
-        nixfmt = {
-          command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt}";
+      settings = {
+        formattersByFt = {
+          nix = [ "nixfmt" ];
+        };
+        formatters = {
+          nixfmt = {
+            command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt}";
+          };
         };
       };
     };

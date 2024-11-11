@@ -44,13 +44,15 @@
     };
 
     conform-nvim = {
-      formattersByFt = {
-        go = [ "goimports" ];
-      };
+      settings = {
+        formattersByFt = {
+          go = [ "goimports" ];
+        };
 
-      formatters = {
-        goimports = {
-          command = "${pkgs.gotools}/bin/goimports";
+        formatters = {
+          goimports = {
+            command = "${pkgs.gotools}/bin/goimports";
+          };
         };
       };
     };
