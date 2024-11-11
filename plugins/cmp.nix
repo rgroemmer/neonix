@@ -10,6 +10,8 @@
     cmp-buffer.enable = true;
     cmp-emoji.enable = true;
 
+    codeium-nvim.enable = true;
+
     cmp = {
       enable = true;
       autoEnableSources = false;
@@ -18,15 +20,13 @@
         sources = {
           __raw = ''
             cmp.config.sources({
-              { name = 'nvim_lsp', max_item_count = 8, group_index = 1},
-              { name = 'path', group_index = 2},
-              { name = 'luasnip', max_item_count = 3, group_index = 1},
-              { name = 'emoji', max_item_count = 5, group_index = 2},
-              -- { name = 'ultisnips' },
-              -- { name = 'snippy' },
-              -- { name = 'vsnip' },
+              { name = 'nvim_lsp'},
+              { name = 'path'},
+              { name = 'luasnip'},
+              { name = 'emoji'},
+              { name = 'codeium'},
             }, {
-              { name = 'buffer' , max_item_count = 3, group_index = 2},
+              { name = 'buffer'},
             })
           '';
         };
