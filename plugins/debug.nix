@@ -12,136 +12,51 @@
     end
   '';
 
-  plugins.which-key.settings.spec = [ { "<leader>d" = "debug"; } ];
+  plugins = {
 
-  plugins.dap = {
-    enable = true;
-    signs = {
-      dapBreakpoint = {
-        text = " ";
-        texthl = "DiagnosticInfo";
-      };
-      dapBreakpointCondition = {
-        text = " ";
-        texthl = "DiagnosticInfo";
-      };
-      dapBreakpointRejected = {
-        text = " ";
-        texthl = "DiagnosticError";
-      };
-      dapLogPoint = {
-        text = " ";
-        texthl = "DiagnosticInfo";
-      };
-      dapStopped = {
-        text = "󰁕 ";
-        texthl = "DiagnosticWarn";
-        linehl = "DapStoppedLine";
-        numhl = "DapStoppedLine";
-      };
-    };
+    #which-key.settings.spec = [{
+    #  __unkeyed-1 = "<leader>d";
+    #  group = "Searching";
+    #  icon = "⛳";
+    #}];
 
-    extensions = {
-      dap-ui = {
-        enable = true;
-        #layouts = [
-        #  {
-        #    elements = [
-        #      {
-        #        id = "stacks";
-        #        size = 0.2;
-        #      }
-        #      {
-        #        id = "scopes";
-        #        size = 0.8;
-        #      }
-        #    ];
-        #    position = "bottom";
-        #    size = 20;
-        #  }
-        #  {
-        #    elements = [
-        #      {
-        #        id = "repl";
-        #        size = 0.8;
-        #      }
-        #      {
-        #        id = "console";
-        #        size = 0.2;
-        #      }
-        #    ];
-        #    position = "bottom";
-        #    size = 20;
-        #  }
-        #  {
-        #    elements = [
-        #      {
-        #        id = "breakpoints";
-        #        size = 0.5;
-        #      }
-        #      {
-        #        id = "watches";
-        #        size = 0.5;
-        #      }
-        #    ];
-        #    position = "bottom";
-        #    size = 20;
-        #  }
-        #];
+    dap = {
+      enable = true;
+      signs = {
+        dapBreakpoint = {
+          text = " ";
+          texthl = "DiagnosticInfo";
+        };
+        dapBreakpointCondition = {
+          text = " ";
+          texthl = "DiagnosticInfo";
+        };
+        dapBreakpointRejected = {
+          text = " ";
+          texthl = "DiagnosticError";
+        };
+        dapLogPoint = {
+          text = " ";
+          texthl = "DiagnosticInfo";
+        };
+        dapStopped = {
+          text = "󰁕 ";
+          texthl = "DiagnosticWarn";
+          linehl = "DapStoppedLine";
+          numhl = "DapStoppedLine";
+        };
       };
-      dap-virtual-text.enable = true;
+
+      extensions = {
+        dap-ui = {
+          enable = true;
+        };
+        dap-virtual-text.enable = true;
+      };
     };
   };
 
   keymaps = [
-    #  {
-    #    action.__raw =
-    #      # lua
-    #      ''
-    #        function()
-    #          require('dapui').open(1)
-    #          require('dapui').close(2)
-    #          require('dapui').close(3)
-    #        end
-    #      '';
-    #    key = "<leader>du1";
-    #    options = {
-    #      desc = "Debug layout 1; Stacks, Scopes";
-    #    };
-    #    mode = [ "n" ];
-    #  }
-    #  {
-    #    action.__raw =
-    #      # lua
-    #      ''
-    #        function()
-    #          require('dapui').open(2)
-    #          require('dapui').close(1)
-    #          require('dapui').close(3)
-    #        end
-    #      '';
-    #    key = "<leader>du2";
-    #    options = {
-    #      desc = "Debug layout 2; breakpoints, watches";
-    #    };
-    #    mode = [ "n" ];
-    #  }
-    #  {
-    #    action =
-    #      # lua
-    #      ''
-    #        function()
-    #          require('dapui').open(3)
-    #          require('dapui').close(1)
-    #          require('dapui').close(2)
-    #        end
-    #      '';
-    #    key = "<leader>du3";
-    #    options = {
-    #      desc = "Debug layout 3; repl, console";
-    #    };
-    #    mode = [ "n" ];
-    #  }
     {
       action.__raw =
         # lua

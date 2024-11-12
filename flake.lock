@@ -431,16 +431,15 @@
     "yaml-companion": {
       "flake": false,
       "locked": {
-        "lastModified": 1717071448,
+        "lastModified": 1720990335,
         "narHash": "sha256-49498W7Hadju54Vi9oOnlNouujhnS8hLQ7ji/3cvIZg=",
-        "owner": "agorgl",
+        "owner": "someone-stole-my-name",
         "repo": "yaml-companion.nvim",
-        "rev": "fda80051a348eb94c3ac7c6950e14b184d96b99a",
+        "rev": "131b0d67bd2e0f1a02e0daf2f3460482221ce3c0",
         "type": "github"
       },
       "original": {
-        "owner": "agorgl",
-        "ref": "patch-1",
+        "owner": "someone-stole-my-name",
         "repo": "yaml-companion.nvim",
         "type": "github"
       }

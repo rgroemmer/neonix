@@ -1,5 +1,6 @@
 {
   imports = [
+    ./navic.nix
     ./lsp.nix
     ./cmp.nix
     ./lualine.nix
@@ -42,7 +43,6 @@
 
   plugins = {
     web-devicons.enable = true;
-    navic.enable = true;
     nvim-autopairs.enable = true;
     nvim-colorizer.enable = true;
     sleuth.enable = true;

@@ -16,7 +16,6 @@
       enable = true;
       autoEnableSources = false;
       settings = {
-
         sources = {
           __raw = ''
             cmp.config.sources({
@@ -34,11 +33,14 @@
         snippet.expand = "luasnip";
 
         mapping = {
-          "<C-Space>" = "cmp.mapping.complete()";
-          "<C-e>" = "cmp.mapping.close()";
+          "<C-e>" = "cmp.mapping.complete()";
           "<CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false })";
           "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
           "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+        };
+
+        completion = {
+          keyword_length = 3;
         };
 
         window = {

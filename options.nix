@@ -11,23 +11,9 @@
     };
   };
 
-  diagnostics = {
-    virtual_text = false;
-  };
-
-  extraConfigLuaPost =
-    # TODO: move to its config
-    # lua
-    ''
-        -- Navic used to get the actual file path of cursor
-        local navic = require("nvim-navic")
-        navic.setup{
-          lsp = {
-            auto_attach = true;
-          },
-        }
-        -- Display filepath on top-line
-        vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+  extraConfigLuaPost = ''
+    --    -- Display filepath on top-line
+    --   vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
        -- show diagnostics on line hover
        vim.api.nvim_create_autocmd({ "CursorHold" }, {
            pattern = "*",
@@ -80,8 +66,18 @@
        		vim.wo.number = false
        	end
        end)
+  '';
 
-    '';
+  plugins.which-key.settings.spec = [
+    {
+      __unkeyed-diag = "<leader>sd";
+      desc = "Toggle virtual text";
+    }
+    {
+      __unkeyed-numb = "<leader>sn";
+      desc = "Toggle relativenumber";
+    }
+  ];
 
   opts = {
     sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions";

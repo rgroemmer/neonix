@@ -12,7 +12,7 @@
 
     # Move to source when #50 is merged
     yaml-companion = {
-      url = "github:agorgl/yaml-companion.nvim/patch-1";
+      url = "github:someone-stole-my-name/yaml-companion.nvim";
       flake = false;
     };
   };
