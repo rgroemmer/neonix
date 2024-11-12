@@ -1,6 +1,15 @@
 {
   keymaps = [
 
+    {
+      action = ":lua MiniFiles.open()<CR>";
+      key = "<leader>e";
+      options = {
+        desc = "Mini explorer";
+      };
+      mode = [ "n" ];
+    }
+
     # make splits easy
     {
       action = "<C-w>v";
