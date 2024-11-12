@@ -1,12 +1,21 @@
 {
   keymaps = [
 
+    {
+      action = ":lua MiniFiles.open()<CR>";
+      key = "<leader>e";
+      options = {
+        desc = "Mini explorer";
+      };
+      mode = [ "n" ];
+    }
+
     # make splits easy
     {
       action = "<C-w>v";
       key = "<leader>,";
       options = {
-        desc = "Split window right";
+        desc = "Split right";
       };
       mode = [ "n" ];
     }
@@ -15,7 +24,7 @@
       action = "<C-w>s";
       key = "<leader>.";
       options = {
-        desc = "Split window below";
+        desc = "Split below";
       };
       mode = [ "n" ];
     }
@@ -25,7 +34,7 @@
       action = "<C-w>h";
       key = "<leader>h";
       options = {
-        desc = "move window left";
+        desc = "move left";
       };
       mode = [ "n" ];
     }
@@ -33,7 +42,7 @@
       action = "<C-w>j";
       key = "<leader>j";
       options = {
-        desc = "move window up";
+        desc = "move up";
       };
       mode = [ "n" ];
     }
@@ -41,7 +50,7 @@
       action = "<C-w>k";
       key = "<leader>k";
       options = {
-        desc = "move window down";
+        desc = "move down";
       };
       mode = [ "n" ];
     }

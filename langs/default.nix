@@ -4,5 +4,6 @@
     ./yaml.nix
     ./helm.nix
     ./nix.nix
+    ./terraform.nix
   ];
 }

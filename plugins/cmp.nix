@@ -1,36 +1,132 @@
+{ pkgs, ... }:
 {
+  extraPlugins = [ pkgs.vimPlugins.lsp_signature-nvim ];
+
   plugins = {
+
+    cmp-nvim-lsp.enable = true;
+    cmp-path.enable = true;
+    cmp_luasnip.enable = true;
+    cmp-buffer.enable = true;
+    cmp-emoji.enable = true;
+
+    codeium-nvim.enable = true;
 
     cmp = {
       enable = true;
       autoEnableSources = false;
       settings = {
-
         sources = {
           __raw = ''
             cmp.config.sources({
-              { name = 'nvim_lsp' },
-              { name = 'path' },
-              -- { name = 'ultisnips' },
-              -- { name = 'snippy' },
-              -- { name = 'vsnip' },
+              { name = 'nvim_lsp'},
+              { name = 'path'},
+              { name = 'luasnip'},
+              { name = 'emoji'},
+              { name = 'codeium'},
             }, {
-              { name = 'buffer' },
+              { name = 'buffer'},
             })
           '';
         };
 
+        snippet.expand = "luasnip";
+
         mapping = {
-          "<C-Space>" = "cmp.mapping.complete()";
-          "<C-e>" = "cmp.mapping.close()";
-          "<CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })";
+          "<C-e>" = "cmp.mapping.complete()";
+          "<CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false })";
           "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
           "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
         };
+
+        completion = {
+          keyword_length = 3;
+        };
+
+        window = {
+          completion = {
+            winhighlight = "FloatBorder:CmpBorder";
+            scrollbar = false;
+          };
+
+          documentation = {
+            winhighlight = "FloatBorder:CmpBorder";
+          };
+        };
+
+        formatting = {
+          fields = [
+            "abbr"
+            "kind"
+            "menu"
+          ];
+          format =
+            # lua
+            ''
+              function(_, item)
+                local icons = {
+                  Namespace = "󰌗",
+                  Text = "󰉿",
+                  Method = "󰆧",
+                  Function = "󰆧",
+                  Constructor = "",
+                  Field = "󰜢",
+                  Variable = "󰀫",
+                  Class = "󰠱",
+                  Interface = "",
+                  Module = "",
+                  Property = "󰜢",
+                  Unit = "󰑭",
+                  Value = "󰎠",
+                  Enum = "",
+                  Keyword = "󰌋",
+                  Snippet = "",
+                  Color = "󰏘",
+                  File = "󰈚",
+                  Reference = "󰈇",
+                  Folder = "󰉋",
+                  EnumMember = "",
+                  Constant = "󰏿",
+                  Struct = "󰙅",
+                  Event = "",
+                  Operator = "󰆕",
+                  TypeParameter = "󰊄",
+                  Table = "",
+                  Object = "󰅩",
+                  Tag = "",
+                  Array = "[]",
+                  Boolean = "",
+                  Number = "",
+                  Null = "󰟢",
+                  String = "󰉿",
+                  Calendar = "",
+                  Watch = "󰥔",
+                  Package = "",
+                  Copilot = "",
+                  Codeium = "",
+                  TabNine = "",
+                }
+
+                local icon = icons[item.kind] or ""
+                item.kind = string.format("%s %s", icon, item.kind or "")
+                return item
+              end
+            '';
+        };
       };
     };
-
-    cmp-nvim-lsp.enable = true;
-    cmp-path.enable = true;
   };
+  extraConfigLua = ''
+    require "lsp_signature".setup({
+      handler_opts = {
+        border = "none"
+      },
+    })
+    local golang_setup = {
+      on_attach = function(client, bufnr)
+        require "lsp_signature".on_attach(signature_setup, bufnr)  -- Note: add in lsp client on-attach
+      end,
+    }
+    require'lspconfig'.gopls.setup(golang_setup)
+  '';
 }

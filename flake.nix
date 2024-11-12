@@ -5,6 +5,16 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim.url = "github:nix-community/nixvim";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Move to source when #50 is merged
+    yaml-companion = {
+      url = "github:someone-stole-my-name/yaml-companion.nvim";
+      flake = false;
+    };
   };
 
   outputs =
@@ -12,6 +22,7 @@
       nixvim,
       flake-parts,
       self,
+      pre-commit-hooks,
       ...
     }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
@@ -31,46 +42,58 @@
       };
 
       perSystem =
-        { pkgs, system, ... }:
+        { system, self', ... }:
         let
-          nixvimLib = nixvim.lib.${system};
           nixvim' = nixvim.legacyPackages.${system};
+          pkgs = import inputs.nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
           nixvimModule = {
             inherit pkgs;
-            module = ({
+            module = {
 
               imports = [
                 ./options.nix
                 ./keymap.nix
+                ./autocmds.nix
 
                 ./plugins
                 ./langs
               ];
-            });
+
+              viAlias = true;
+              vimAlias = true;
+            };
             # You can use `extraSpecialArgs` to pass additional arguments to your module files
             extraSpecialArgs = {
-              # inherit (inputs) foo;
+              inherit inputs;
             };
           };
           nvim = nixvim'.makeNixvimWithModule nixvimModule;
         in
         {
-          devShells.default = pkgs.mkShell {
-            buildInputs = [ pkgs.entr ];
-
-            shellHook = ''
-              echo "Dev environment ready, Run ./watch.sh to start live reloading.";
-            '';
-          };
-
           checks = {
-            # Run `nix flake check .` to verify that your config is not broken
-            default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
+            pre-commit-check = pre-commit-hooks.lib.${system}.run {
+              src = ./.;
+              hooks = {
+                statix.enable = true;
+                nixfmt-rfc-style.enable = true;
+              };
+            };
           };
 
-          packages = {
-            # Lets you run `nix run .` to start nixvim
-            default = nvim;
+          formatter = pkgs.nixfmt-rfc-style;
+
+          packages.default = nvim;
+
+          devShells = {
+            default =
+              with pkgs;
+              mkShell {
+                inherit (self'.checks.pre-commit-check) shellHook;
+                packages = [ nvim ];
+              };
           };
         };
     };
