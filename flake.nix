@@ -65,31 +65,6 @@
     };
 
     formatter = forAllSystems (pkgs: pkgs.alejandra);
-
-    checks = forAllSystems (pkgs: {
-      pre-commit-check = pre-commit-hooks.lib.${pkgs.system}.run {
-        src = ./.;
-        hooks = {
-          statix.enable = true;
-          alejandra.enable = true;
-          deadnix.enable = true;
-        };
-      };
-    });
-
-    devShells = forAllSystems (pkgs: {
-      default = with pkgs;
-        mkShell {
-          inherit (self.checks.${pkgs.system}.pre-commit-check) shellHook;
-
-          packages = [
-            nh
-            statix
-            deadnix
-            alejandra
-            nix-inspect
-          ];
-        };
-    });
+    devShells = forAllSystems (pkgs: import ./shell.nix {inherit pkgs pre-commit-hooks;});
   };
 }
