@@ -1,5 +1,5 @@
 {
-  description = "RAPSN's NeoNix IDE";
+  description = "RAPSN NeoNix IDE";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -36,6 +36,14 @@
       });
     forAllSystems = f: lib.genAttrs systems (system: f pkgsFor.${system});
   in {
+    formatter = forAllSystems (pkgs: pkgs.alejandra);
+    devShells = forAllSystems (pkgs: import ./shell.nix {inherit pkgs pre-commit-hooks;});
+
+    homeManagerModules = {
+      default = self.homeManagerModules.neonix;
+      neonix = import ./hm-module.nix self;
+    };
+
     packages = forAllSystems (pkgs: {
       default = nixvim.legacyPackages.${pkgs.system}.makeNixvimWithModule {
         inherit pkgs;
@@ -58,13 +66,5 @@
         };
       };
     });
-
-    homeManagerModules = {
-      default = self.homeManagerModules.neonix;
-      neonix = import ./hm-module.nix self;
-    };
-
-    formatter = forAllSystems (pkgs: pkgs.alejandra);
-    devShells = forAllSystems (pkgs: import ./shell.nix {inherit pkgs pre-commit-hooks;});
   };
 }
