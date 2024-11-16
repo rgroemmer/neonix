@@ -1,6 +1,6 @@
 {
   keymaps = [
-
+    # explorer
     {
       action = ":lua MiniFiles.open()<CR>";
       key = "<leader>e";
@@ -9,8 +9,7 @@
       };
       mode = [ "n" ];
     }
-
-    # make splits easy
+    # tiling
     {
       action = "<C-w>v";
       key = "<leader>,";
@@ -28,8 +27,7 @@
       };
       mode = [ "n" ];
     }
-
-    # easy window movement
+    # window navigation
     {
       action = "<C-w>h";
       key = "<leader>h";

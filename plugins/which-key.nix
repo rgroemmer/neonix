@@ -13,5 +13,16 @@
         };
       };
     };
+    # Additional which-key descriptions
+    settings.spec = [
+      {
+        __unkeyed-diag = "<leader>sd";
+        desc = "Toggle virtual text";
+      }
+      {
+        __unkeyed-numb = "<leader>sn";
+        desc = "Toggle relativenumber";
+      }
+    ];
   };
 }

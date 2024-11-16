@@ -49,16 +49,9 @@
         inherit pkgs;
         module = {
           imports = [
-            ./options.nix
-            ./keymap.nix
-            ./autocmds.nix
-
-            ./plugins
-            ./langs
+              ./core
+              #./plugins
           ];
-
-          viAlias = true;
-          vimAlias = true;
         };
         # You can use `extraSpecialArgs` to pass additional arguments to your module files
         extraSpecialArgs = {
