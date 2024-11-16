@@ -1,6 +1,8 @@
-{ pkgs, config, ... }:
 {
-  # packages required in PATH for this lang
+  pkgs,
+  config,
+  ...
+}: {
   extraPackages = with pkgs; [
     go
     gopls
@@ -46,7 +48,7 @@
     conform-nvim = {
       settings = {
         formattersByFt = {
-          go = [ "goimports" ];
+          go = ["goimports"];
         };
 
         formatters = {
@@ -59,7 +61,7 @@
 
     lint = {
       lintersByFt = {
-        go = [ "golangcilint" ];
+        go = ["golangcilint"];
       };
       linters = {
         golangcilint = {
@@ -67,9 +69,8 @@
         };
       };
     };
-
   };
   plugins.treesitter = {
-    grammarPackages = with config.plugins.treesitter.package.builtGrammars; [ go ];
+    grammarPackages = with config.plugins.treesitter.package.builtGrammars; [go];
   };
 }

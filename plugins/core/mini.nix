@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   plugins.mini = {
     enable = true;
     modules = {
@@ -29,11 +28,11 @@
             section = "";
           }
         ];
-        footer = "I use NIX btw.";
+        footer = "I use NIX btw. -- RAPSN";
       };
 
-      files = { }; # mini file explorer
-      comment = { }; # toggle comments
+      files = {}; # mini file explorer
+      comment = {}; # toggle comments
     };
   };
 }

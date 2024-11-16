@@ -49,8 +49,8 @@
         inherit pkgs;
         module = {
           imports = [
-              ./core
-              #./plugins
+            ./core
+            ./plugins
           ];
         };
         # You can use `extraSpecialArgs` to pass additional arguments to your module files
