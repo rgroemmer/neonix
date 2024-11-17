@@ -17,7 +17,6 @@ in {
       inherit (pre-commit-check) shellHook;
 
       packages = [
-        nh
         statix
         deadnix
         alejandra
