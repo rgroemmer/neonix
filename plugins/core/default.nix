@@ -16,6 +16,8 @@
     ./lualine.nix
     ./which-key.nix
     ./better-escape.nix
+
+    ./diagnostics.nix
   ];
 
   # Core plugins wo/configuration

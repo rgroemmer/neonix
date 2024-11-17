@@ -35,4 +35,16 @@
       comment = {}; # toggle comments
     };
   };
+
+  keymaps = [
+    # explorer
+    {
+      action = ":lua MiniFiles.open()<CR>";
+      key = "-";
+      options = {
+        desc = "Mini explorer";
+      };
+      mode = ["n"];
+    }
+  ];
 }

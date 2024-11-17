@@ -7,7 +7,5 @@
     ./navic.nix
     ./lazygit.nix
     ./yaml-companion.nix
-
-    ./extraconfig.nix
   ];
 }

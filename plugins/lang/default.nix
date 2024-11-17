@@ -6,8 +6,4 @@
     ./nix.nix
     ./terraform.nix
   ];
-
-  plugins = {
-    trouble.enable = true; # Diagnostics with lsp, treesitter, etc.
-  };
 }

@@ -1,14 +1,5 @@
 {
   keymaps = [
-    # explorer
-    {
-      action = ":lua MiniFiles.open()<CR>";
-      key = "<leader>e";
-      options = {
-        desc = "Mini explorer";
-      };
-      mode = [ "n" ];
-    }
     # tiling
     {
       action = "<C-w>v";
@@ -16,7 +7,7 @@
       options = {
         desc = "Split right";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
 
     {
@@ -25,7 +16,7 @@
       options = {
         desc = "Split below";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     # window navigation
     {
@@ -34,7 +25,7 @@
       options = {
         desc = "move left";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action = "<C-w>j";
@@ -42,7 +33,7 @@
       options = {
         desc = "move up";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action = "<C-w>k";
@@ -50,7 +41,7 @@
       options = {
         desc = "move down";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action = "<C-w>l";
@@ -58,7 +49,7 @@
       options = {
         desc = "move right";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
   ];
 }

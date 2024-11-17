@@ -1,6 +1,17 @@
 {
-  # TODO: Try to moving the most
-  extraConfigLuaPost = ''
+  diagnostics = {
+    virtual_text = true;
+    update_in_insert = true;
+  };
+
+  extraConfigLua = ''
+    -- diagnostic signs
+    local signs = { Error = "💥", Warn = "🚧", Hint = "💡", Info = " " }
+    for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+      vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
+    end
+
     -- show diagnostics on line hover
     vim.api.nvim_create_autocmd({ "CursorHold" }, {
         pattern = "*",
@@ -24,18 +35,7 @@
         end
     })
 
-    local signs = { Error = "💥", Warn = "🚧", Hint = "💡", Info = " " }
-    for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
-    end
-
-    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-      vim.lsp.diagnostic.on_publish_diagnostics, {
-      update_in_insert = true,
-    })
-
-    -- Custom functional keymaps
+    -- toggle virtual_text & relativenumber
     vim.keymap.set("n", "<leader>sd", function()
         isLspDiagnosticsVisible = not isLspDiagnosticsVisible
         vim.diagnostic.config({
