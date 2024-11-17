@@ -9,8 +9,6 @@
 
 <img width="512" src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png"></img>
 
-<img alt="neonix-mascott" width="420" src="https://pusheen.com/wp-content/uploads/2023/02/Pastel_Pusheen_Parfait.jpg"></img>
-
 This is my go-to Neovim configuration for daily use.
 Leveraging the power of LSP with intuitive keymaps, intelligent suggestions, and my all-time favorite colorscheme, Catppuccin.
 
@@ -53,3 +51,9 @@ programs.neonix = {
     enable = true;
 };
 ```
+
+## Licenses
+
+The Neovim logo used in this README was created by [Jason Long](https://github.com/jasonlong) and is licensed under the [Creative Commons Attribution 3.0 Unported License (CC BY 3.0)](https://creativecommons.org/licenses/by/3.0/).
+This logo has been modified for use in this project.
+
