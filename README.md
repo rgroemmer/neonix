@@ -9,8 +9,7 @@
 
 <img width="512" src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png"></img>
 
-This is my favorite everyday editor configuration for neovim.
-The configuration will offer the following features:
+This is my go-to Neovim configuration for daily use.
 
 </div>
 
