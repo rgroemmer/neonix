@@ -10,6 +10,7 @@
 <img width="512" src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png"></img>
 
 This is my go-to Neovim configuration for daily use.
+Leveraging the power of LSP with intuitive keymaps, intelligent suggestions, and my all-time favorite colorscheme, Catppuccin.
 
 </div>
 
