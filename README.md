@@ -9,6 +9,8 @@
 
 <img width="512" src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png"></img>
 
+<img alt="neonix-mascott" width="420" src="https://pusheen.com/wp-content/uploads/2023/02/Pastel_Pusheen_Parfait.jpg"></img>
+
 This is my go-to Neovim configuration for daily use.
 Leveraging the power of LSP with intuitive keymaps, intelligent suggestions, and my all-time favorite colorscheme, Catppuccin.
 
