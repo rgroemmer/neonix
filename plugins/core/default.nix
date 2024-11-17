@@ -8,6 +8,7 @@
 
     # Explorer & files
     ./mini.nix
+    ./oil.nix
     ./telescope.nix
 
     # Look & feel
