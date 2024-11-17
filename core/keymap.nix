@@ -1,23 +1,23 @@
 {
   keymaps = [
-
+    # Copy to system clipboard
     {
-      action = ":lua MiniFiles.open()<CR>";
-      key = "<leader>e";
+      action = "\"+";
+      key = "<leader>c";
       options = {
-        desc = "Mini explorer";
+        desc = "System clipboard";
       };
-      mode = [ "n" ];
+      mode = ["n" "v"];
     }
 
-    # make splits easy
+    # Tiling
     {
       action = "<C-w>v";
       key = "<leader>,";
       options = {
         desc = "Split right";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
 
     {
@@ -26,17 +26,16 @@
       options = {
         desc = "Split below";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
-
-    # easy window movement
+    # Window navigation
     {
       action = "<C-w>h";
       key = "<leader>h";
       options = {
         desc = "move left";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action = "<C-w>j";
@@ -44,7 +43,7 @@
       options = {
         desc = "move up";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action = "<C-w>k";
@@ -52,7 +51,7 @@
       options = {
         desc = "move down";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action = "<C-w>l";
@@ -60,7 +59,7 @@
       options = {
         desc = "move right";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
   ];
 }

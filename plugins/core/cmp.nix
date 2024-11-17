@@ -1,16 +1,12 @@
-{ pkgs, ... }:
-{
-  extraPlugins = [ pkgs.vimPlugins.lsp_signature-nvim ];
+{pkgs, ...}: {
+  extraPlugins = [pkgs.vimPlugins.lsp_signature-nvim];
 
   plugins = {
-
     cmp-nvim-lsp.enable = true;
     cmp-path.enable = true;
     cmp_luasnip.enable = true;
     cmp-buffer.enable = true;
     cmp-emoji.enable = true;
-
-    codeium-nvim.enable = true;
 
     cmp = {
       enable = true;
@@ -23,7 +19,6 @@
               { name = 'path'},
               { name = 'luasnip'},
               { name = 'emoji'},
-              { name = 'codeium'},
             }, {
               { name = 'buffer'},
             })

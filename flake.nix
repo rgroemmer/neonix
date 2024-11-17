@@ -1,100 +1,63 @@
 {
-  description = "A nixvim configuration";
+  description = "RAPSN NeoNix IDE";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixvim.url = "github:nix-community/nixvim";
-    flake-parts.url = "github:hercules-ci/flake-parts";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Move to source when #50 is merged
+    # Plugins not part of nixpkgs
     yaml-companion = {
       url = "github:someone-stole-my-name/yaml-companion.nvim";
       flake = false;
     };
   };
 
-  outputs =
-    {
-      nixvim,
-      flake-parts,
-      self,
-      pre-commit-hooks,
-      ...
-    }@inputs:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    nixvim,
+    pre-commit-hooks,
+    ...
+  }: let
+    inherit (nixpkgs) lib;
 
-      flake = {
-        homeManagerModules = {
-          default = self.homeManagerModules.neonix;
-          # calling module with explicit parameter self
-          neonix = import ./hm-module.nix self;
+    systems = ["x86_64-linux" "aarch64-darwin"];
+    pkgsFor = lib.genAttrs systems (system:
+      import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      });
+    forAllSystems = f: lib.genAttrs systems (system: f pkgsFor.${system});
+  in {
+    formatter = forAllSystems (pkgs: pkgs.alejandra);
+    devShells = forAllSystems (pkgs: import ./shell.nix {inherit pkgs pre-commit-hooks;});
+
+    homeManagerModules = {
+      default = self.homeManagerModules.neonix;
+      neonix = import ./hm-module.nix self;
+    };
+
+    packages = forAllSystems (pkgs: {
+      default = nixvim.legacyPackages.${pkgs.system}.makeNixvimWithModule {
+        inherit pkgs;
+        module = {
+          imports = [
+            ./core
+            ./plugins
+          ];
+        };
+        # You can use `extraSpecialArgs` to pass additional arguments to your module files
+        extraSpecialArgs = {
+          inherit inputs;
         };
       };
-
-      perSystem =
-        { system, self', ... }:
-        let
-          nixvim' = nixvim.legacyPackages.${system};
-          pkgs = import inputs.nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
-          nixvimModule = {
-            inherit pkgs;
-            module = {
-
-              imports = [
-                ./options.nix
-                ./keymap.nix
-                ./autocmds.nix
-
-                ./plugins
-                ./langs
-              ];
-
-              viAlias = true;
-              vimAlias = true;
-            };
-            # You can use `extraSpecialArgs` to pass additional arguments to your module files
-            extraSpecialArgs = {
-              inherit inputs;
-            };
-          };
-          nvim = nixvim'.makeNixvimWithModule nixvimModule;
-        in
-        {
-          checks = {
-            pre-commit-check = pre-commit-hooks.lib.${system}.run {
-              src = ./.;
-              hooks = {
-                statix.enable = true;
-                nixfmt-rfc-style.enable = true;
-              };
-            };
-          };
-
-          formatter = pkgs.nixfmt-rfc-style;
-
-          packages.default = nvim;
-
-          devShells = {
-            default =
-              with pkgs;
-              mkShell {
-                inherit (self'.checks.pre-commit-check) shellHook;
-                packages = [ nvim ];
-              };
-          };
-        };
-    };
+    });
+  };
 }

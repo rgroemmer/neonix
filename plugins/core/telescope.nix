@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   extraPackages = with pkgs; [
     ripgrep
     fd
@@ -78,7 +77,7 @@
     which-key.settings.spec = [
       {
         __unkeyed-1 = "<leader>f";
-        group = "Searching";
+        group = "Search";
         icon = "🔎";
       }
     ];

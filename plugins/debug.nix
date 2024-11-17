@@ -13,13 +13,6 @@
   '';
 
   plugins = {
-
-    #which-key.settings.spec = [{
-    #  __unkeyed-1 = "<leader>d";
-    #  group = "Searching";
-    #  icon = "⛳";
-    #}];
-
     dap = {
       enable = true;
       signs = {
@@ -69,7 +62,7 @@
       options = {
         desc = "Continue";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action.__raw =
@@ -85,7 +78,7 @@
       options = {
         desc = " toggle types";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action =
@@ -99,7 +92,7 @@
       options = {
         desc = "Step over";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action.__raw =
@@ -113,7 +106,7 @@
       options = {
         desc = "Step Into";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action.__raw =
@@ -127,7 +120,7 @@
       options = {
         desc = "Step Out";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action.__raw =
@@ -141,7 +134,7 @@
       options = {
         desc = "Pause";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action.__raw =
@@ -155,7 +148,7 @@
       options = {
         desc = "Toggle Breakpoint";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action.__raw =
@@ -169,7 +162,7 @@
       options = {
         desc = "Breakpoint (conditional)";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action.__raw =
@@ -183,7 +176,7 @@
       options = {
         desc = "Toggle REPL";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action.__raw =
@@ -200,7 +193,7 @@
       options = {
         desc = "Restart Debugger";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action.__raw =
@@ -214,7 +207,7 @@
       options = {
         desc = "Run Last";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action.__raw =
@@ -228,7 +221,7 @@
       options = {
         desc = "Session";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action.__raw =
@@ -242,7 +235,7 @@
       options = {
         desc = "Terminate";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action.__raw =
@@ -256,7 +249,7 @@
       options = {
         desc = "Hover Widget";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action.__raw =
@@ -270,7 +263,7 @@
       options = {
         desc = "Run all lines up to cursor";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action.__raw =
@@ -284,7 +277,7 @@
       options = {
         desc = "Evaluate value under cursor";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action.__raw =
@@ -298,7 +291,7 @@
       options = {
         desc = "Toggle UI";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
     {
       action.__raw =
@@ -312,7 +305,7 @@
       options = {
         desc = "Eval";
       };
-      mode = [ "n" ];
+      mode = ["n"];
     }
   ];
 }
