@@ -1,7 +1,5 @@
 {
   imports = [
-    ./colorscheme.nix
-
     # Syntax & intellisense
     ./lsp.nix
     ./treesitter.nix
