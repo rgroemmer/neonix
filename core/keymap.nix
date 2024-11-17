@@ -1,6 +1,16 @@
 {
   keymaps = [
-    # tiling
+    # Copy to system clipboard
+    {
+      action = "\"+";
+      key = "<leader>c";
+      options = {
+        desc = "System clipboard";
+      };
+      mode = ["n" "v"];
+    }
+
+    # Tiling
     {
       action = "<C-w>v";
       key = "<leader>,";
@@ -18,7 +28,7 @@
       };
       mode = ["n"];
     }
-    # window navigation
+    # Window navigation
     {
       action = "<C-w>h";
       key = "<leader>h";
