@@ -1,5 +1,5 @@
 <div align="center">
-    <img width="128" style="padding-bottom: 5px;" src="./static/img/Neovim-Logo-1.png"></img>
+    <img width="128" style="padding-bottom: 10px;" src="./static/img/Neovim-Logo-1.png"></img>
 
 ![Go](https://img.shields.io/badge/language-go-%2389b4fa?style=for-the-badge&logo=go&logoColor=white)
 ![Terraform](https://img.shields.io/badge/IaC-terraform-%23cba6f7?style=for-the-badge&logo=terraform&logoColor=white)
