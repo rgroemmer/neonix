@@ -1,6 +1,6 @@
 {
   imports = [
-    ./core
+    ./common
     ./lang
 
     ./debug.nix

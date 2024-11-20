@@ -4,7 +4,7 @@
   };
   autoCmd = [
     {
-      event = [ "TextYankPost" ];
+      event = ["TextYankPost"];
       group = "highlight_yank";
       desc = "Highlight yanked content";
       callback = {
