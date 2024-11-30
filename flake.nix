@@ -49,7 +49,7 @@
         inherit pkgs;
         module = {
           imports = [
-            ./core
+            ./common
             ./plugins
           ];
         };
