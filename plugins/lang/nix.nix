@@ -1,7 +1,11 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   extraPackages = with pkgs; [
-    nixfmt-rfc-style
+    alejandra
     statix
   ];
 
@@ -10,18 +14,25 @@
     # highlight inline code in nix files
     hmts.enable = true;
 
-    lsp.servers.nil_ls = {
-      enable = true;
-    };
-
     conform-nvim = {
       settings = {
-        formattersByFt = {
-          nix = [ "nixfmt" ];
+        formatters_by_ft = {
+          nix = ["alejandra"];
         };
         formatters = {
-          nixfmt = {
-            command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt}";
+          alejandra = {
+            command = lib.getExe pkgs.alejandra;
+          };
+        };
+      };
+    };
+
+    lsp.servers.nixd = {
+      enable = true;
+      extraOptions.settings = {
+        nixd = {
+          nixpkgs = {
+            expr = "import <nixpkgs> { }";
           };
         };
       };
@@ -29,17 +40,17 @@
 
     lint = {
       lintersByFt = {
-        nix = [ "statix" ];
+        nix = ["statix"];
       };
       linters = {
         statix = {
-          cmd = "${pkgs.statix}/bin/statix";
+          cmd = lib.getExe pkgs.statix;
         };
       };
     };
 
     treesitter = {
-      grammarPackages = with config.plugins.treesitter.package.builtGrammars; [ nix ];
+      grammarPackages = with config.plugins.treesitter.package.builtGrammars; [nix];
     };
   };
 

@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   extraPackages = with pkgs; [
@@ -47,13 +48,13 @@
 
     conform-nvim = {
       settings = {
-        formattersByFt = {
+        formatters_by_ft = {
           go = ["goimports"];
         };
 
         formatters = {
           goimports = {
-            command = "${pkgs.gotools}/bin/goimports";
+            command = lib.getExe' pkgs.gotools "goimports";
           };
         };
       };
@@ -65,7 +66,7 @@
       };
       linters = {
         golangcilint = {
-          cmd = "${pkgs.golangci-lint}/bin/golangci-lint";
+          cmd = lib.getExe pkgs.golangci-lint;
         };
       };
     };

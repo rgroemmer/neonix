@@ -1,8 +1,11 @@
-{ pkgs, ... }:
 {
-  extraPackages = with pkgs; [ helm-ls ];
+  pkgs,
+  lib,
+  ...
+}: {
+  extraPackages = with pkgs; [helm-ls];
 
-  extraPlugins = with pkgs.vimPlugins; [ vim-helm ];
+  extraPlugins = with pkgs.vimPlugins; [vim-helm];
 
   extraConfigLua =
     # lua
@@ -14,7 +17,7 @@
       	settings = {
       		['helm-ls'] = {
       			yamlls = {
-      				path = "${pkgs.yaml-language-server}/bin/yaml-language-server",
+      				path = "${lib.getExe pkgs.yaml-language-server}",
       			}
       		}
       	}
