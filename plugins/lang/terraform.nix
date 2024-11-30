@@ -22,7 +22,7 @@
 
         formatters = {
           terraform_fmt = {
-            command = lib.getExe' pkgs.terraform "fmt";
+            command = lib.getExe' pkgs.terraform "terraform fmt";
           };
         };
       };

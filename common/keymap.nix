@@ -7,6 +7,7 @@
       options = {
         desc = "System clipboard";
       };
+
       mode = ["n" "v"];
     }
 
@@ -17,6 +18,7 @@
       options = {
         desc = "Split right";
       };
+
       mode = ["n"];
     }
 
