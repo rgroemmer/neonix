@@ -34,10 +34,6 @@
           "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
         };
 
-        completion = {
-          keyword_length = 3;
-        };
-
         window = {
           completion = {
             winhighlight = "FloatBorder:CmpBorder";
