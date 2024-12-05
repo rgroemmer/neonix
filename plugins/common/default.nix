@@ -1,7 +1,5 @@
 {
   imports = [
-    ./colorscheme.nix
-
     # Syntax & intellisense
     ./lsp.nix
     ./treesitter.nix
@@ -10,6 +8,7 @@
 
     # Explorer & files
     ./mini.nix
+    ./oil.nix
     ./telescope.nix
 
     # Look & feel
@@ -26,5 +25,7 @@
     web-devicons.enable = true; # dependency for core-plugins
     dressing.enable = true; # better ui-elements
     sleuth.enable = true; # auto detect indentation, tabstop
+    fidget.enable = true; # LSP progress
+    hardtime.enable = true; # Get some hints to do it better
   };
 }

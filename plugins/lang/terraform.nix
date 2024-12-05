@@ -1,5 +1,13 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  extraPackages = with pkgs; [
+    terraform
+  ];
+
   plugins = {
     lsp.servers.terraformls = {
       enable = true;
@@ -7,14 +15,14 @@
 
     conform-nvim = {
       settings = {
-        formattersByFt = {
-          tf = [ "terraform_fmt" ];
-          terraform = [ "terraform_fmt" ];
+        formatters_by_ft = {
+          tf = ["terraform_fmt"];
+          terraform = ["terraform_fmt"];
         };
 
         formatters = {
           terraform_fmt = {
-            command = "${pkgs.terraform}/bin/terraform fmt";
+            command = lib.getExe' pkgs.terraform "terraform fmt";
           };
         };
       };
@@ -27,5 +35,4 @@
       ];
     };
   };
-
 }

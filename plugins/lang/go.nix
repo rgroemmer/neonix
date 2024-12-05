@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   extraPackages = with pkgs; [
@@ -25,6 +26,16 @@
             fieldalignment = true;
             useany = true;
           };
+          codelenses = {
+            gc_details = false;
+            generate = true;
+            regenerate_cgo = true;
+            run_govulncheck = true;
+            test = true;
+            tidy = true;
+            upgrade_dependency = true;
+            vendor = true;
+          };
         };
       };
     };
@@ -47,13 +58,13 @@
 
     conform-nvim = {
       settings = {
-        formattersByFt = {
+        formatters_by_ft = {
           go = ["goimports"];
         };
 
         formatters = {
           goimports = {
-            command = "${pkgs.gotools}/bin/goimports";
+            command = lib.getExe' pkgs.gotools "goimports";
           };
         };
       };
@@ -65,7 +76,7 @@
       };
       linters = {
         golangcilint = {
-          cmd = "${pkgs.golangci-lint}/bin/golangci-lint";
+          cmd = lib.getExe pkgs.golangci-lint;
         };
       };
     };

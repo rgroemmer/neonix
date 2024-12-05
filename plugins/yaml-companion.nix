@@ -1,20 +1,24 @@
-{ pkgs, inputs, ... }:
-let
-  nvim-yaml-companion =
-    with pkgs;
+{
+  pkgs,
+  inputs,
+  ...
+}: let
+  nvim-yaml-companion = with pkgs;
     vimUtils.buildVimPlugin {
       pname = "yaml-companion";
       version = "main";
       src = inputs.yaml-companion;
     };
-in
-{
-  extraPlugins = [ nvim-yaml-companion ];
+in {
+  extraPlugins = [nvim-yaml-companion];
 
   extraConfigLua =
     # lua
     ''
       local cfg = require("yaml-companion").setup({
+
+
+
         schemas = {
           {
             name = "HelmRelease",

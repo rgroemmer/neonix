@@ -28,12 +28,13 @@
     conform-nvim = {
       enable = true;
       settings = {
-        formatOnSave = {
-          lspFallback = true;
-          timeoutMs = 500;
+        format_on_save = {
+          lsp_format = "fallback";
+          timeout_ms = 500;
         };
       };
     };
+
     lint.enable = true;
   };
 

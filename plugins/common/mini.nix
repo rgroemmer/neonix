@@ -39,10 +39,10 @@
   keymaps = [
     # explorer
     {
-      action = ":lua MiniFiles.open()<CR>";
-      key = "-";
+      action = "<cmd>lua MiniFiles.open()<cr>";
+      key = "<leader>e";
       options = {
-        desc = "Mini explorer";
+        desc = "Open File Tree";
       };
       mode = ["n"];
     }

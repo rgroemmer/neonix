@@ -1,11 +1,59 @@
-# NEONIX
+<div align="center">
+    <img width="128" style="padding-bottom: 10px;" src="./static/img/Neovim-Logo-1.png"></img>
 
-This is my favorite everyday editor configuration for neovim.
+![Go](https://img.shields.io/badge/language-go-%2389b4fa?style=for-the-badge&logo=go&logoColor=white)
+![Terraform](https://img.shields.io/badge/IaC-terraform-%23cba6f7?style=for-the-badge&logo=terraform&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/runtime-kubernetes-%2389b4fa?style=for-the-badge&logo=kubernetes&logoColor=white)
+![Treesitter](https://img.shields.io/badge/plugin-treesitter-%23f2cdcd?style=for-the-badge&logo=treesitter&logoColor=white)
+![Telescope](https://img.shields.io/badge/plugin-telescope-%23f2cdcd?style=for-the-badge&logo=lua&logoColor=white)
 
-Currently, it is under construction :construction:
-The configuration will offer the following features:
+<img width="512" src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png"></img>
 
-- Standalone usability from anywhere with nix run github:rgroemmer/neonix
-- Integration with home-manager as a module, activated through programs.neonix.enable
-- Separation of configuration and language-support for modularity and customization according to specific needs
+This is my go-to Neovim configuration for daily use.
+Leveraging the power of LSP with intuitive keymaps, intelligent suggestions, and my all-time favorite colorscheme, Catppuccin.
+
+</div>
+
+## ✨ Features
+
+- Standalone usability from anywhere via `nix run`.
+- Home-manager integration.
+
+## 🚀 Usage
+
+```bash
+nix develop
+
+# Anywhere
+nix run github:rgroemmer/neonix
+
+# Local
+nix run .
+
+```
+
+## 🏠 Home-manager
+
+```nix
+# add to inputs
+neonix = {
+  url = "github:rgroemmer/neonix";
+  inputs.nixpkgs.follows = "nixpkgs";
+};
+
+# import module
+imports = [
+  inputs.neonix.homeManagerModules.neonix
+];
+
+# activate
+programs.neonix = {
+    enable = true;
+};
+```
+
+## Licenses
+
+The Neovim logo used in this README was created by [Jason Long](https://github.com/jasonlong) and is licensed under the [Creative Commons Attribution 3.0 Unported License (CC BY 3.0)](https://creativecommons.org/licenses/by/3.0/).
+This logo has been modified for use in this project.
 
