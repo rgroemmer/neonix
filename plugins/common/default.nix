@@ -26,6 +26,5 @@
     dressing.enable = true; # better ui-elements
     sleuth.enable = true; # auto detect indentation, tabstop
     fidget.enable = true; # LSP progress
-    hardtime.enable = true; # Get some hints to do it better
   };
 }
