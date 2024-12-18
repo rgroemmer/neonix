@@ -5,8 +5,8 @@
 
     ./debug.nix
 
+    ./snacks.nix
     ./navic.nix
-    ./lazygit.nix
     ./yaml-companion.nix
   ];
 }
