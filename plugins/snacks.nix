@@ -14,9 +14,18 @@ in {
 
   extraConfigLuaPre = ''
     require "snacks".setup({
+      -- NOTE: Test it:
+      dim = {},
+
+      -- NOTE: Worthy:
       bigfile = {},
-      scroll = {},
+      gitbrowse = {},
       lazygit = {},
+      notifier = {},
+      notify = {},
+      scroll = {},
+
+      quickfile = {},
     })
   '';
 
