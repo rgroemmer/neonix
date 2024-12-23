@@ -22,8 +22,6 @@
     };
   };
 
-  extraPackages = with pkgs; [helm-ls];
-
   plugins.treesitter = {
     grammarPackages = with config.plugins.treesitter.package.builtGrammars; [yaml];
   };
