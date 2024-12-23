@@ -19,7 +19,7 @@
 
         formatters = {
           rustfmt = {
-            command = lib.getExe' pkgs.rustfmt;
+            command = lib.getExe pkgs.rustfmt;
           };
         };
       };
