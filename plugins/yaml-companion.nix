@@ -16,9 +16,6 @@ in {
     # lua
     ''
       local cfg = require("yaml-companion").setup({
-
-
-
         schemas = {
           {
             name = "HelmRelease",
