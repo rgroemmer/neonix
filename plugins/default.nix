@@ -7,6 +7,5 @@
 
     ./snacks.nix
     ./navic.nix
-    ./yaml-companion.nix
   ];
 }
