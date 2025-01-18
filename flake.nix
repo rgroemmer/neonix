@@ -11,12 +11,6 @@
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Plugins not part of nixpkgs
-    yaml-companion = {
-      url = "github:someone-stole-my-name/yaml-companion.nvim";
-      flake = false;
-    };
   };
 
   outputs = inputs @ {

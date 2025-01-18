@@ -1,23 +1,8 @@
-{pkgs, ...}: let
-  # TODO: Remove when upstream is on latest
-  snacks-nvim-git = pkgs.vimUtils.buildVimPlugin {
-    name = "snacks-nvim-git";
-    src = pkgs.fetchFromGitHub {
-      owner = "folke";
-      repo = "snacks.nvim";
-      rev = "v2.11.0";
-      hash = "sha256-0RLVkdV/R+9eXRCIj8MbpdAx7Tq4h6aRppEFzZC+ILw=";
-    };
-  };
-in {
-  extraPlugins = [snacks-nvim-git];
+{pkgs, ...}: {
+  extraPlugins = with pkgs.vimPlugins; [snacks-nvim];
 
   extraConfigLuaPre = ''
     require "snacks".setup({
-      -- NOTE: Test it:
-      dim = {},
-
-      -- NOTE: Worthy:
       bigfile = {},
       gitbrowse = {},
       lazygit = {},
@@ -25,7 +10,6 @@ in {
       notify = {},
       scroll = {},
       terminal = {},
-
       quickfile = {},
     })
   '';
