@@ -9,6 +9,7 @@
       notifier = {},
       notify = {},
       scroll = {},
+      terminal = {},
       quickfile = {},
     })
   '';

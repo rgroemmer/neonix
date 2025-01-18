@@ -1,4 +1,29 @@
 {
+  plugins.trouble.enable = true;
+
+  keymaps = [
+    {
+      action = "<cmd>Trouble diagnostics toggle win.position=right win.size=0.4<cr>";
+      key = "<leader>dx";
+      options = {
+        desc = "Trouble diagnostics whole project";
+      };
+      mode = [
+        "n"
+      ];
+    }
+    {
+      action = "<cmd>Trouble diagnostics toggle win.position=right win.size=0.4 filter.buf=0<cr>";
+      key = "<leader>dd";
+      options = {
+        desc = "Trouble diagnostics current buffer";
+      };
+      mode = [
+        "n"
+      ];
+    }
+  ];
+
   extraConfigLua = ''
     -- diagnostic signs
     local signs = { Error = "💥", Warn = "🚧", Hint = "💡", Info = " " }
