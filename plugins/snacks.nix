@@ -24,6 +24,7 @@ in {
       notifier = {},
       notify = {},
       scroll = {},
+      terminal = {},
 
       quickfile = {},
     })

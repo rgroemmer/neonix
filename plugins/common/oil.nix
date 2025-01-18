@@ -23,6 +23,7 @@
         view_options = {
           show_hidden = true;
         };
+        experimental_watch_for_changes = true;
       };
     };
   };
