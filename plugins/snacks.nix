@@ -23,6 +23,14 @@
       };
       mode = ["n"];
     }
+    {
+      action = "<cmd>lua Snacks.terminal.toggle()<cr>";
+      key = "<leader>T";
+      options = {
+        desc = "Toggle Terminal";
+      };
+      mode = ["n"];
+    }
   ];
 
   plugins.which-key.settings.spec = [

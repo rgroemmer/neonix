@@ -25,11 +25,12 @@
           '';
         };
 
+        preselect = "cmp.PreselectMode.None";
         snippet.expand = "luasnip";
 
         mapping = {
           "<C-e>" = "cmp.mapping.complete()";
-          "<CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false })";
+          "<CR>" = "cmp.mapping.confirm({ select = false })";
           "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
           "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
         };

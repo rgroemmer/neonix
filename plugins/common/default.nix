@@ -24,7 +24,6 @@
     nvim-autopairs.enable = true;
     web-devicons.enable = true; # dependency for core-plugins
     dressing.enable = true; # better ui-elements
-    sleuth.enable = true; # auto detect indentation, tabstop
     fidget.enable = true; # LSP progress
   };
 }
