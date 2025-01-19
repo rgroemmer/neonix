@@ -17,7 +17,7 @@
 
   # Theme or related plugins
   plugins = {
-    nvim-colorizer.enable = true; # highlight hex colors & more
+    colorizer.enable = true; # highlight hex colors & more
     illuminate.enable = true; # highlight word under cursor
     todo-comments.enable = true; # highlight todo comments
   };
