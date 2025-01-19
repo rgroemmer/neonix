@@ -7,5 +7,6 @@
 
     ./snacks.nix
     ./navic.nix
+    ./test.nix
   ];
 }

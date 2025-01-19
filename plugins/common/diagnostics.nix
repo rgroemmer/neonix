@@ -3,6 +3,16 @@
 
   keymaps = [
     {
+      action = "<cmd>lua vim.diagnostic.open_float()<cr>";
+      key = "L";
+      options = {
+        desc = "Trouble diagnostics whole project";
+      };
+      mode = [
+        "n"
+      ];
+    }
+    {
       action = "<cmd>Trouble diagnostics toggle win.position=right win.size=0.4<cr>";
       key = "<leader>dx";
       options = {
