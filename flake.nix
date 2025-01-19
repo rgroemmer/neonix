@@ -43,8 +43,22 @@
         inherit pkgs;
         module = {
           imports = [
-            ./common
-            ./plugins
+            ./config
+            ./plugins/common
+            ./plugins/ide
+          ];
+        };
+        # You can use `extraSpecialArgs` to pass additional arguments to your module files
+        extraSpecialArgs = {
+          inherit inputs;
+        };
+      };
+      mini = nixvim.legacyPackages.${pkgs.system}.makeNixvimWithModule {
+        inherit pkgs;
+        module = {
+          imports = [
+            ./config
+            ./plugins/common
           ];
         };
         # You can use `extraSpecialArgs` to pass additional arguments to your module files
