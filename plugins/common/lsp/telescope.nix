@@ -25,14 +25,18 @@
         };
         "<leader>fz" = {
           action = "current_buffer_fuzzy_find";
-
           options = {
             desc = "Find in current buffer";
           };
         };
-        "<leader>?" = {
+        "<leader>fr" = {
+          action = "resume";
+          options = {
+            desc = "Find in current buffer";
+          };
+        };
+        "<leader>f?" = {
           action = "oldfiles";
-
           options = {
             desc = "Recent files";
           };
