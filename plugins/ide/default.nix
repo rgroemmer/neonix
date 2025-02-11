@@ -11,7 +11,8 @@
     # Debugging
     ./diagnostics.nix
     ./debug.nix
-    ./neotest.nix
+    # TODO: Test if not broken anymore
+    #./neotest.nix
 
     # Navigation / UX
     ./snacks.nix
