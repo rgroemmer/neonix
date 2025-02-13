@@ -1,7 +1,7 @@
 {
   plugins.neotest = {
     enable = true;
-    adapters.go.enable = true;
+    adapters.golang.enable = true;
     settings = {
       output = {
         enabled = true;
