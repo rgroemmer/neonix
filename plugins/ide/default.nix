@@ -12,7 +12,7 @@
     ./diagnostics.nix
     ./debug.nix
     # TODO: Test if not broken anymore
-    #./neotest.nix
+    ./neotest.nix
 
     # Navigation / UX
     ./snacks.nix
