@@ -6,7 +6,7 @@
       action = "<cmd>lua vim.diagnostic.open_float()<cr>";
       key = "L";
       options = {
-        desc = "Trouble diagnostics whole project";
+        desc = "[Diag] Toggle float";
       };
       mode = [
         "n"

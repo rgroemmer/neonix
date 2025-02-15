@@ -43,20 +43,22 @@
       };
     };
 
-    dap.extensions.dap-go = {
+    dap-go = {
       enable = true;
-      delve = {
-        port = "38697";
-        path = "dlv";
+      settings = {
+        delve = {
+          port = "38697";
+          path = "dlv";
+        };
+        dapConfigurations = [
+          {
+            type = "go";
+            name = "Attach remote";
+            mode = "remote";
+            request = "attach";
+          }
+        ];
       };
-      dapConfigurations = [
-        {
-          type = "go";
-          name = "Attach remote";
-          mode = "remote";
-          request = "attach";
-        }
-      ];
     };
 
     conform-nvim = {

@@ -1,54 +1,4 @@
 {
-  extraConfigLua = ''
-    local dap, dapui =require("dap"),require("dapui")
-    dap.listeners.after.event_initialized["dapui_config"]=function()
-      dapui.open()
-    end
-    dap.listeners.before.event_terminated["dapui_config"]=function()
-      dapui.close()
-    end
-    dap.listeners.before.event_exited["dapui_config"]=function()
-      dapui.close()
-    end
-  '';
-
-  plugins = {
-    dap = {
-      enable = true;
-      signs = {
-        dapBreakpoint = {
-          text = " ";
-          texthl = "DiagnosticInfo";
-        };
-        dapBreakpointCondition = {
-          text = " ";
-          texthl = "DiagnosticInfo";
-        };
-        dapBreakpointRejected = {
-          text = " ";
-          texthl = "DiagnosticError";
-        };
-        dapLogPoint = {
-          text = " ";
-          texthl = "DiagnosticInfo";
-        };
-        dapStopped = {
-          text = "󰁕 ";
-          texthl = "DiagnosticWarn";
-          linehl = "DapStoppedLine";
-          numhl = "DapStoppedLine";
-        };
-      };
-
-      extensions = {
-        dap-ui = {
-          enable = true;
-        };
-        dap-virtual-text.enable = true;
-      };
-    };
-  };
-
   keymaps = [
     {
       action.__raw =
@@ -69,28 +19,12 @@
         # lua
         ''
           function()
-            local render = require("dapui.config").render
-            render.max_type_length = (render.max_type_length == nil) and 0 or nil
-            require("dapui").update_render(render)
-          end
-        '';
-      key = "<leader>dut";
-      options = {
-        desc = " toggle types";
-      };
-      mode = ["n"];
-    }
-    {
-      action =
-        # lua
-        ''
-          function()
             require('dap').step_over()
           end
         '';
-      key = "<leader>dO";
+      key = "<leader>o";
       options = {
-        desc = "Step over";
+        desc = "[Debug] Step Into";
       };
       mode = ["n"];
     }
@@ -102,9 +36,9 @@
             require('dap').step_into()
           end
         '';
-      key = "<leader>di";
+      key = "<leader>i";
       options = {
-        desc = "Step Into";
+        desc = "[Debug] Step Into";
       };
       mode = ["n"];
     }
@@ -116,9 +50,9 @@
             require('dap').step_out()
           end
         '';
-      key = "<leader>do";
+      key = "<leader>O";
       options = {
-        desc = "Step Out";
+        desc = "[Debug] Step Out";
       };
       mode = ["n"];
     }
@@ -144,7 +78,7 @@
             require('dap').toggle_breakpoint()
           end
         '';
-      key = "<leader>db";
+      key = "<C-b>";
       options = {
         desc = "Toggle Breakpoint";
       };
