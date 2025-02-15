@@ -8,6 +8,9 @@
     go
     gopls
     delve
+    # cgo deps
+    libcap
+    gcc
   ];
 
   plugins = {
