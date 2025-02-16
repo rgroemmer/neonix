@@ -13,10 +13,6 @@
     oil = {
       enable = true;
 
-      lazyLoad.settings = {
-        cmd = "Oil";
-      };
-
       settings = {
         delete_to_trash = true;
         use_default_keymaps = true;
