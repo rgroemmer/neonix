@@ -24,11 +24,13 @@
             "-.git"
             "-.vscode"
           ];
+
           semanticTokens = true;
           analyses = {
             fieldalignment = true;
             useany = true;
           };
+
           codelenses = {
             gc_details = false;
             generate = true;
@@ -45,11 +47,17 @@
 
     dap-go = {
       enable = true;
+
+      lazyLoad.settings = {
+        ft = "go";
+      };
+
       settings = {
         delve = {
           port = "38697";
           path = "dlv";
         };
+
         dapConfigurations = [
           {
             type = "go";

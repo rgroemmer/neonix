@@ -2,6 +2,11 @@
   plugins = {
     dap-ui = {
       enable = true;
+
+      lazyLoad.settings = {
+        ft = "go";
+      };
+
       settings = {
         layouts = [
           {

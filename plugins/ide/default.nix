@@ -25,6 +25,7 @@
   ];
 
   plugins = {
+    lz-n.enable = true; # LazyLoad libary
     dressing.enable = true; # better ui-elements
     fidget.enable = true; # LSP progress
   };
