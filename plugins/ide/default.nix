@@ -9,10 +9,15 @@
     ./langs/terraform.nix
 
     # Debugging
-    ./diagnostics.nix
-    ./debug.nix
-    # TODO: Test if not broken anymore
+    ./debug/dap.nix
+    ./debug/dap-ui.nix
+    ./debug/keymaps.nix
+
+    # Testing
     ./neotest.nix
+
+    # Diag
+    ./diagnostics.nix
 
     # Navigation / UX
     ./snacks.nix

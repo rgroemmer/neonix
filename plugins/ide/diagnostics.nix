@@ -1,12 +1,17 @@
 {
-  plugins.trouble.enable = true;
+  plugins.trouble = {
+    enable = true;
+    lazyLoad.settings = {
+      cmd = "Trouble";
+    };
+  };
 
   keymaps = [
     {
       action = "<cmd>lua vim.diagnostic.open_float()<cr>";
       key = "L";
       options = {
-        desc = "Trouble diagnostics whole project";
+        desc = "[Diag] Toggle float";
       };
       mode = [
         "n"
@@ -36,7 +41,7 @@
 
   extraConfigLua = ''
     -- diagnostic signs
-    local signs = { Error = "💥", Warn = "🚧", Hint = "💡", Info = " " }
+    local signs = { Error = "", Warn = "🚧", Hint = "💡", Info = " " }
     for type, icon in pairs(signs) do
         local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })

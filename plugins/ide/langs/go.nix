@@ -21,11 +21,13 @@
             "-.git"
             "-.vscode"
           ];
+
           semanticTokens = true;
           analyses = {
             fieldalignment = true;
             useany = true;
           };
+
           codelenses = {
             gc_details = false;
             generate = true;
@@ -40,20 +42,28 @@
       };
     };
 
-    dap.extensions.dap-go = {
+    dap-go = {
       enable = true;
-      delve = {
-        port = "38697";
-        path = "dlv";
+
+      lazyLoad.settings = {
+        ft = "go";
       };
-      dapConfigurations = [
-        {
-          type = "go";
-          name = "Attach remote";
-          mode = "remote";
-          request = "attach";
-        }
-      ];
+
+      settings = {
+        delve = {
+          port = "38697";
+          path = "dlv";
+        };
+
+        dapConfigurations = [
+          {
+            type = "go";
+            name = "Attach remote";
+            mode = "remote";
+            request = "attach";
+          }
+        ];
+      };
     };
 
     conform-nvim = {

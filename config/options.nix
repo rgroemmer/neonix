@@ -15,7 +15,6 @@
     };
   };
 
-  # TODO: remove defaults, document settings
   opts = {
     sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions";
     completeopt = "menuone,noinsert,noselect";

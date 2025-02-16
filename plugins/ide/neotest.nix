@@ -2,57 +2,30 @@
   plugins.neotest = {
     enable = true;
     adapters.go.enable = true;
+    lazyLoad.settings = {
+      cmd = "Neotest";
+      keys = [
+        {
+          __unkeyed-1 = "<leader>t";
+          __unkeyed-3 = "<CMD>Neotest summary<CR>";
+          desc = "🧪 Summary toggle";
+        }
+      ];
+    };
   };
-  keymaps = [
-    {
-      action = "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>";
-      key = "<leader>tt";
-      options = {
-        desc = "Fun file";
-      };
-      mode = [
-        "n"
-      ];
-    }
-    {
-      action = "<cmd>lua require('neotest').run.run(vim.loop.cwd())<cr>";
-      key = "<leader>tT";
-      options = {
-        desc = "Run All Test Files";
-      };
-      mode = [
-        "n"
-      ];
-    }
-    {
-      action = "<cmd>lua require('neotest').run.run()<cr>";
-      key = "<leader>tr";
-      options = {
-        desc = "Run Nearest";
-      };
-      mode = [
-        "n"
-      ];
-    }
-    {
-      action = "<cmd>lua require('neotest').summary.toggle()<cr>";
-      key = "<leader>ts";
-      options = {
-        desc = "Toogle Summary";
-      };
-      mode = [
-        "n"
-      ];
-    }
-    {
-      action = "<cmd>lua require('neotest').output.open({enter=true, auto_close=true})<cr>";
-      key = "<leader>to";
-      options = {
-        desc = "Show output";
-      };
-      mode = [
-        "n"
-      ];
-    }
-  ];
+  extraConfigLua =
+    # lua
+    ''
+      -- Make q to quit floating windows
+      vim.keymap.set('n', 'q', function()
+        local winid = vim.api.nvim_get_current_win()
+        local config = vim.api.nvim_win_get_config(winid)
+
+        if config.relative ~= "" then
+          vim.api.nvim_win_close(winid, true)
+        else
+          vim.api.nvim_feedkeys('q', 'n', false)
+        end
+      end, { noremap = true, silent = true })
+    '';
 }

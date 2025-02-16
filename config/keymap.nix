@@ -11,26 +11,6 @@
       mode = ["n" "v"];
     }
 
-    # Jump motions
-    {
-      action = "<C-i>";
-      key = "<leader>i";
-      options = {
-        desc = "jump into ->";
-      };
-
-      mode = ["n"];
-    }
-    {
-      action = "<C-o>";
-      key = "<leader>o";
-      options = {
-        desc = "jump back <-";
-      };
-
-      mode = ["n"];
-    }
-
     # Tiling
     {
       action = "<C-w>v";

@@ -1,6 +1,11 @@
 {
   plugins.which-key = {
     enable = true;
+
+    lazyLoad.settings = {
+      cmd = "WhichKey";
+    };
+
     settings = {
       layout = {
         height = {
@@ -13,6 +18,7 @@
         };
       };
     };
+
     # Additional which-key descriptions
     settings.spec = [
       {
@@ -26,6 +32,7 @@
       {
         __unkeyed-numb = "<leader>s";
         desc = "Style";
+        icon = "💄";
       }
       {
         __unkeyed-numb = "<leader>r";
@@ -34,6 +41,23 @@
       {
         __unkeyed-numb = "<leader>d";
         desc = "Debug";
+      }
+      # Hide some keymaps
+      {
+        __unkeyed-numb = "<leader>h";
+        hidden = true;
+      }
+      {
+        __unkeyed-numb = "<leader>j";
+        hidden = true;
+      }
+      {
+        __unkeyed-numb = "<leader>k";
+        hidden = true;
+      }
+      {
+        __unkeyed-numb = "<leader>l";
+        hidden = true;
       }
     ];
   };
