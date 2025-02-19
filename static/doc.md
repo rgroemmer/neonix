@@ -40,6 +40,7 @@ With great power comes great responsiblity, to remember the power of `neovim` he
           "type": "go",
           "request": "launch",
           "program": "cmd/app1/main.go",
+          "outputMode": "remote",
           "env": {
               "APP_FOO": "bar"
           }
@@ -49,6 +50,7 @@ With great power comes great responsiblity, to remember the power of `neovim` he
           "type": "go",
           "request": "launch",
           "program": "cmd/app2/main.go",
+          "outputMode": "remote",
           "env": {
               "APP_FOO": "bar"
           }
@@ -56,3 +58,5 @@ With great power comes great responsiblity, to remember the power of `neovim` he
   ]
 }
 ```
+
+> `outputMode: remote` is important to get logs to `dapui`
