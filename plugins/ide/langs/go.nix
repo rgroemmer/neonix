@@ -45,10 +45,6 @@
     dap-go = {
       enable = true;
 
-      lazyLoad.settings = {
-        ft = "go";
-      };
-
       settings = {
         delve = {
           port = "38697";

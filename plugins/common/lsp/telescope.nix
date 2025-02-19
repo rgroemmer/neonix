@@ -7,9 +7,6 @@
   plugins = {
     telescope = {
       enable = true;
-      lazyLoad.settings = {
-        cmd = "Telescope";
-      };
 
       settings.pickers = {
         buffers.initial_mode = "normal";

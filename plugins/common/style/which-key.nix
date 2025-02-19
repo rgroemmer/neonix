@@ -2,10 +2,6 @@
   plugins.which-key = {
     enable = true;
 
-    lazyLoad.settings = {
-      cmd = "WhichKey";
-    };
-
     settings = {
       layout = {
         height = {
